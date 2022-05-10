@@ -20,8 +20,17 @@
 			</nav>
 		</header>
 		<section>
-			<h2>Carros DisponÃ­veis</h2>
-			<div class="carros"></div>
+			<h2>Veículos da LocaCar</h2>
+			<div class="cars">
+				<% veiculos.forEach(produto =>{%>
+				<div class="car">
+					<figure>
+						<img src="<%= produto.foto %>" alt="Foto do Carro" />
+					</figure>
+					<p><%= produto.nome %></p>
+				</div>
+				<%}) %>
+			</div>
 		</section>
 	</body>
 </html>
