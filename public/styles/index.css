@@ -63,11 +63,11 @@ section h2 {
 section .cars {
 	display: flex;
 	flex-flow: wrap row;
-	gap: 5%;
+	gap: 2%;
 	margin-top: 2rem;
 }
 section .cars .car {
-	width: 30%;
+	width: 32%;
 	background-color: #fff;
 	border-radius: 0.6rem;
 	box-shadow: 0 8px 21px rgb(0 0 0 / 17%);
