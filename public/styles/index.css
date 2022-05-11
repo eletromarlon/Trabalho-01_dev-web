@@ -81,3 +81,11 @@ section .cars .car figure {
 section .cars .car figure img {
 	width: 100%;
 }
+
+section .cars .car div h2 {
+	font: normal normal 500 1.125rem/1.6875rem "Poppins", sans-serif;
+	color: #3c3c3c;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 1rem;
+}
