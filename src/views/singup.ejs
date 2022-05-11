@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LocaCar - Locadora de Veí­culos</title>
+		<link rel="stylesheet" href="styles/globalStyles.css" />
+		<link rel="stylesheet" href="styles/singin.css" />
+	</head>
+	<body>
+		<section>
+			<div class="login">
+				<header>
+					<a href="/">
+						<figure>
+							<img src="images/logo.svg" alt="Logo LocaCar" />
+							<h1>LocaCar</h1>
+						</figure>
+					</a>
+					<form action="">
+						<div class="title">
+							<h1 class="cadastro">Cadastre-se na LocaCar</h1>
+							<p>Faça o singup para acessar sua conta.</p>
+						</div>
+						<div class="input">
+							<label for="name">Nome</label>
+							<input
+								type="text"
+								name="name"
+								id="name"
+								placeholder="nome"
+							/>
+						</div>
+						<div class="input">
+							<label for="email">E-mail</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								placeholder="@email.com"
+							/>
+						</div>
+						<div class="input">
+							<label for="nascimento">Nascimento</label>
+							<input
+								type="date"
+								name="nascimento"
+								id="nascimento"
+								placeholder="nascimento"
+							/>
+						</div>
+						<div class="input">
+							<label for="telefone">Telefone</label>
+							<input
+								type="tel"
+								name="telefone"
+								id="telefone"
+								placeholder="(00) 00000-0000"
+							/>
+						</div>
+						<div class="input">
+							<label for="genero">Gênero</label>
+							<input
+								type="radio"
+								name="genero"
+								id="masculino"
+								value="masculino"
+							/>Masculino
+							<input
+								type="radio"
+								name="genero"
+								id="feminino"
+								value="feminino"
+							/>Feminino
+						</div>
+						<div class="input">
+							<label for="password">Senha</label>
+							<input
+								type="password"
+								id="password"
+								name="password"
+								placeholder="senha"
+							/>
+						</div>
+						<div class="input">
+							<label for="password2">Confirmar senha</label>
+							<input
+								type="password"
+								id="password2"
+								name="password2"
+								placeholder="senha"
+							/>
+						</div>
+						<button type="submit" class="btn-cad">Cadastrar</button>
+					</form>
+				</header>
+			</div>
+			<figure class="carro-lateral">
+				<img src="images/carroLoginCad.png" alt="Carro do Login" />
+			</figure>
+		</section>
+	</body>
+</html>

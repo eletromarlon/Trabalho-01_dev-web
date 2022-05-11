@@ -26,6 +26,10 @@ server.get("/singin", (req, res) => {
 	res.render("singin", {});
 });
 
+server.get("/singup", (req, res) => {
+	res.render("singup", {});
+});
+
 server.listen(3000, () => {
 	console.log(`Server is running on port 3000`);
 });

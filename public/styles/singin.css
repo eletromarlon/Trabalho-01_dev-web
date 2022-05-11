@@ -96,3 +96,14 @@ section .login form h3 {
 	margin-top: 40px;
 	color: #7c7c7c;
 }
+section .login form h3 a {
+	text-decoration: none;
+	color: #f54a48;
+}
+
+section .login form .title .cadastro {
+	font-size: 2rem;
+}
+section .login form .btn-cad {
+	margin-bottom: 2rem;
+}
