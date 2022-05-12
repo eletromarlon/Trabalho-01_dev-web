@@ -7,6 +7,7 @@
 		<title>LocaCar - Locadora de Veí­culos</title>
 		<link rel="stylesheet" href="styles/globalStyles.css" />
 		<link rel="stylesheet" href="styles/singin.css" />
+		<link rel="stylesheet" href="styles/singup.css" />
 	</head>
 	<body>
 		<section>
@@ -23,76 +24,151 @@
 							<h1 class="cadastro">Cadastre-se na LocaCar</h1>
 							<p>Faça o singup para acessar sua conta.</p>
 						</div>
-						<div class="input">
-							<label for="name">Nome</label>
-							<input
-								type="text"
-								name="name"
-								id="name"
-								placeholder="nome"
-							/>
+						<div class="etapas">
+							<div class="etapa">
+								<div class="nivel">
+									<div class="valor">
+										<h2 class="valor1">1</h2>
+										<hr />
+									</div>
+								</div>
+								<div class="nivel nivel2">
+									<div class="valor">
+										<h2>2</h2>
+									</div>
+								</div>
+							</div>
+							<div class="title">
+								<h2>Dados Pessoais</h2>
+								<h2>Dados de Acesso</h2>
+							</div>
 						</div>
-						<div class="input">
-							<label for="email">E-mail</label>
-							<input
-								type="email"
-								id="email"
-								name="email"
-								placeholder="@email.com"
-							/>
+						<div class="pessoais">
+							<div class="input">
+								<label for="name">Nome</label>
+								<input
+									type="text"
+									name="name"
+									id="name"
+									placeholder="nome"
+									required
+								/>
+							</div>
+
+							<div class="input">
+								<label for="nascimento">Nascimento</label>
+								<input
+									type="date"
+									name="nascimento"
+									id="nascimento"
+									placeholder="nascimento"
+									required
+								/>
+							</div>
+							<div class="input">
+								<label for="telefone">Telefone</label>
+								<input
+									type="tel"
+									name="telefone"
+									id="telefone"
+									placeholder="(99) 99999-9999"
+									maxlength="15"
+									pattern="\(\d{2}\)\s*\d{5}-\d{4}"
+									required
+								/>
+							</div>
+							<div class="input">
+								<label for="genero">Gênero</label>
+								<div class="sexos">
+									<input
+										type="radio"
+										name="genero"
+										id="masculino"
+										value="masculino"
+									/>
+									<label
+										for="masculino"
+										class="sexo"
+										onclick="sexo()"
+										>Masculino</label
+									>
+									<input
+										type="radio"
+										name="genero"
+										id="feminino"
+										value="feminino"
+									/>
+									<label
+										for="feminino"
+										class="sexo"
+										onclick="sexo()"
+										>Feminino</label
+									>
+								</div>
+							</div>
+							<div class="btn-a">
+								<a onclick="proxima()">Avançar</a>
+							</div>
 						</div>
-						<div class="input">
-							<label for="nascimento">Nascimento</label>
-							<input
-								type="date"
-								name="nascimento"
-								id="nascimento"
-								placeholder="nascimento"
-							/>
+						<div class="confirmar">
+							<div class="input">
+								<label for="email">E-mail</label>
+								<input
+									type="email"
+									id="email"
+									name="email"
+									placeholder="@email.com"
+									required
+								/>
+							</div>
+							<div class="input">
+								<label for="password">Senha</label>
+								<div class="password">
+									<input
+										type="password"
+										id="password"
+										name="password"
+										placeholder="senha"
+										minlength="6"
+										required
+									/>
+									<i
+										class="fa-solid fa-eye mostrar"
+										onclick="mostrarSenha()"
+									></i>
+								</div>
+							</div>
+							<div class="input">
+								<label for="password2">Confirmar senha</label>
+								<div class="password">
+									<input
+										type="password"
+										id="password2"
+										name="password"
+										placeholder="senha"
+										minlength="6"
+										required
+									/>
+									<i
+										class="fa-solid fa-eye mostrar2"
+										onclick="mostrarSenha2()"
+									></i>
+								</div>
+							</div>
+							<div class="finalizar">
+								<a onclick="voltar()"
+									><i class="fa-solid fa-angle-left"></i>
+									Voltar</a
+								>
+								<a onclick="confirmarDados()" class="botao"
+									>Cadastrar</a
+								>
+								<button
+									type="submit"
+									class="btnConfima"
+								></button>
+							</div>
 						</div>
-						<div class="input">
-							<label for="telefone">Telefone</label>
-							<input
-								type="tel"
-								name="telefone"
-								id="telefone"
-								placeholder="(00) 00000-0000"
-							/>
-						</div>
-						<div class="input">
-							<label for="genero">Gênero</label>
-							<input
-								type="radio"
-								name="genero"
-								id="masculino"
-								value="masculino"
-							/>Masculino
-							<input
-								type="radio"
-								name="genero"
-								id="feminino"
-								value="feminino"
-							/>Feminino
-						</div>
-						<div class="input">
-							<label for="password">Senha</label>
-							<input
-								type="password"
-								id="password"
-								name="password"
-								placeholder="senha"
-							/>
-						</div>
-						<div class="input">
-							<label for="password2">Confirmar senha</label>
-							<input
-								type="password"
-								id="password2"
-								name="password2"
-								placeholder="senha"
-							/>
-						</div>
-						<button type="submit" class="btn-cad">Cadastrar</button>
 					</form>
 				</header>
 			</div>
@@ -100,5 +176,14 @@
 				<img src="images/carroLoginCad.png" alt="Carro do Login" />
 			</figure>
 		</section>
+
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="sweetalert2.all.min.js"></script>
+		<script src="scripts/singup.js"></script>
+		<script
+			src="https://kit.fontawesome.com/09c2a18d79.js"
+			crossorigin="anonymous"
+		></script>
+		<script></script>
 	</body>
 </html>

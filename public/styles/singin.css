@@ -107,3 +107,27 @@ section .login form .title .cadastro {
 section .login form .btn-cad {
 	margin-bottom: 2rem;
 }
+
+section .login form .input .password {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+section .login form .input .password input {
+	border-right: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	width: 90%;
+}
+section .login form .input .password i {
+	color: #3c3c3c;
+	background-color: #f9f9f9;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	padding: 0.625rem 0.9375rem;
+	height: 100%;
+	font-size: 1.25rem;
+	border-left: none;
+}

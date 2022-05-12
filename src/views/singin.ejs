@@ -30,16 +30,25 @@
 								id="email"
 								name="email"
 								placeholder="@email.com"
+								required
 							/>
 						</div>
 						<div class="input">
 							<label for="password">Senha</label>
-							<input
-								type="password"
-								id="password"
-								name="password"
-								placeholder="senha"
-							/>
+							<div class="password">
+								<input
+									type="password"
+									id="password"
+									name="password"
+									placeholder="senha"
+									minlength="6"
+									required
+								/>
+								<i
+									class="fa-solid fa-eye"
+									onclick="mostrarSenha()"
+								></i>
+							</div>
 						</div>
 						<button type="submit">Entrar</button>
 						<h3>
@@ -53,5 +62,10 @@
 				<img src="images/carroLoginCad.png" alt="Carro do Login" />
 			</figure>
 		</section>
+		<script src="scripts/singin.js"></script>
+		<script
+			src="https://kit.fontawesome.com/09c2a18d79.js"
+			crossorigin="anonymous"
+		></script>
 	</body>
 </html>

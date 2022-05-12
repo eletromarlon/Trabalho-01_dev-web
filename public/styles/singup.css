@@ -1,0 +1,131 @@
+.etapa {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+.etapa .nivel {
+	width: 75%;
+	display: flex;
+	flex-direction: column;
+}
+.etapa .nivel .valor {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.etapa .nivel .valor h2 {
+	color: #f54a48;
+	font: normal normal 600 1.375rem/2.875rem "Poppins", sans-serif;
+	border: 3px solid #f54a48;
+	border-radius: 50%;
+	padding: 0 1.2rem;
+}
+.etapa .nivel .valor hr {
+	width: calc(100% - 3.146rem - 2px);
+	height: 2px;
+	background-color: #f54a48;
+	border: 2px solid #f54a48;
+}
+
+.etapa .nivel2 {
+	width: 15%;
+}
+
+.etapas .title {
+	font: normal normal 600 0.75rem/2.875rem "Poppins", sans-serif;
+	display: flex;
+	justify-content: space-between;
+	color: #f54a48;
+}
+
+section .login .confirmar {
+	display: none;
+}
+
+section .login .btn-a {
+	width: 100%;
+	margin-bottom: 30px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #fff;
+	background-color: #f54a48;
+	font: normal normal 600 0.875rem/1.05rem "Poppins", sans-serif;
+	padding: 10px 0;
+	text-align: center;
+	border-radius: 3px;
+}
+
+section .login form .sexos {
+	display: flex;
+}
+
+section .login form .sexos input[type="radio"] {
+	display: none;
+}
+
+section .login form .sexos .sexo {
+	border: 2px solid #e6e6e6;
+	color: #f54a48;
+	width: 50%;
+	text-align: center;
+	padding: 0.625rem 0;
+}
+section .login form .sexos .selecionado {
+	background-color: #f54a48;
+	color: #fff;
+	border: 2px solid #f54a48;
+}
+
+section .login form .confirmar .input .password {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+section .login form .confirmar .input .password input {
+	border-right: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	width: 90%;
+}
+section .login form .confirmar .input .password i {
+	color: #3c3c3c;
+	background-color: #f9f9f9;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	padding: 0.625rem 0.9375rem;
+	height: 100%;
+	font-size: 1.25rem;
+	border-left: none;
+}
+
+section .login form .confirmar .finalizar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	margin-bottom: 30px;
+}
+section .login form .confirmar .finalizar .botao {
+	width: 80%;
+	text-align: center;
+	background-color: #f54a48;
+	padding: 10px 0;
+	border-radius: 3px;
+	color: #fff;
+	font: normal normal 600 0.875rem/1.05rem "Poppins", sans-serif;
+}
+section .login form .confirmar .finalizar a {
+	font: normal normal 600 0.875rem/1.05rem "Poppins", sans-serif;
+	color: #3c3c3c;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.btnConfirma {
+	display: none;
+}
