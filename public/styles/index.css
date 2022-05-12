@@ -89,3 +89,17 @@ section .cars .car div h2 {
 	text-transform: uppercase;
 	margin-top: 1rem;
 }
+section .cars .car .description {
+	margin-top: 1rem;
+}
+section .cars .car .description ul {
+	list-style: none;
+}
+section .cars .car .description ul li {
+	font: normal normal 400 1rem/1.5rem "Poppins", sans-serif;
+	color: #3c3c3c;
+}
+section .cars .car .description ul li span {
+	color: #000;
+	text-transform: capitalize;
+}
