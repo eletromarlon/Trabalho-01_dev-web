@@ -8,14 +8,14 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const db = await database.connect();
+const db = await database.connect(); // conecta ao banco de dados
 
 const server = express();
+server.use(express.urlencoded({ extended: true })); //habilita o uso do post dentro das rotas
+server.use(express.static(path.join(__dirname + "/public"))); //habilita o uso de arquivos estaticos
 
-server.use(express.static(path.join(__dirname + "/public")));
-
-server.set("views", path.join(__dirname + "/src/views"));
-server.set("view engine", "ejs");
+server.set("views", path.join(__dirname + "/src/views")); //define a pasta de views
+server.set("view engine", "ejs"); //define o motor de views
 
 server.get("/", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
@@ -28,6 +28,10 @@ server.get("/singin", (req, res) => {
 
 server.get("/singup", (req, res) => {
 	res.render("singup", {});
+});
+
+server.get("/admin", (req, res) => {
+	res.render("admin", {});
 });
 
 server.listen(3000, () => {
