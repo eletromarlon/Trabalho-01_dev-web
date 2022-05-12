@@ -30,6 +30,10 @@ server.get("/singup", (req, res) => {
 	res.render("singup", {});
 });
 
+server.post("/singup-cadastrar", (req, res) => {
+	console.log(req.body);
+});
+
 server.get("/admin", (req, res) => {
 	res.render("admin", {});
 });

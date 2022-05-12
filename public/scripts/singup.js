@@ -120,11 +120,6 @@ const confirmarDados = () => {
 			icon: "success",
 			title: "Cadastro com Sucesso",
 		});
-
-		setTimeout(() => {
-			document.querySelector(".btnConfima").click();
-			window.location.href = "/singin";
-		}, 2000);
 	} else if (password.value !== password2.value) {
 		const Toast = Swal.mixin({
 			toast: true,

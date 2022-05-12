@@ -49,7 +49,6 @@ section .login .btn-a {
 	width: 100%;
 	margin-bottom: 30px;
 	cursor: pointer;
-	text-decoration: none;
 	color: #fff;
 	background-color: #f54a48;
 	font: normal normal 600 0.875rem/1.05rem "Poppins", sans-serif;
@@ -118,14 +117,11 @@ section .login form .confirmar .finalizar .botao {
 	border-radius: 3px;
 	color: #fff;
 	font: normal normal 600 0.875rem/1.05rem "Poppins", sans-serif;
+	cursor: pointer;
 }
 section .login form .confirmar .finalizar a {
 	font: normal normal 600 0.875rem/1.05rem "Poppins", sans-serif;
 	color: #3c3c3c;
 	cursor: pointer;
 	text-decoration: none;
-}
-
-.btnConfirma {
-	display: none;
 }
