@@ -1,0 +1,37 @@
+section .header {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+section .header a {
+	font: normal normal 400 1.125rem/1.5rem "Poppins", sans-serif;
+	cursor: pointer;
+	padding: 5px 5px;
+	background: rgba(52, 195, 143, 0.2);
+	border-radius: 3px;
+	color: #34c38f;
+}
+
+section .cars .car footer {
+	display: flex;
+	flex-flow: wrap row;
+	justify-content: space-between;
+}
+section .cars .car footer a {
+	font: normal normal 400 1.125rem/1.5rem "Poppins", sans-serif;
+	width: 49%;
+	text-align: center;
+	cursor: pointer;
+	padding: 5px 0;
+}
+section .cars .car footer .edit {
+	background: rgba(250, 193, 47, 0.2);
+	border-radius: 3px;
+	color: #fac12f;
+}
+section .cars .car footer .delete {
+	background: rgba(245, 74, 72, 0.2);
+	border-radius: 3px;
+	color: #f54a48;
+}

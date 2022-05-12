@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LocaCar - Locadora de Veículos</title>
+		<link rel="stylesheet" href="styles/globalStyles.css" />
+		<link rel="stylesheet" href="styles/index.css" />
+		<link rel="stylesheet" href="styles/admLoja.css" />
+	</head>
+	<body>
+		<header>
+			<figure>
+				<img src="images/logo.svg" alt="Logo" />
+				<h1>LocaCar</h1>
+			</figure>
+			<nav>
+				<a href="/admloja">Loja</a>
+				<a>Aluguéis</a>
+				<a>Usuários</a>
+				<a href="/" class="cadastrar"
+					>Sair <i class="fa-solid fa-arrow-right-from-bracket"></i
+				></a>
+			</nav>
+		</header>
+		<section>
+			<div class="header">
+				<h2>Seus Veículos</h2>
+				<a>Adicionar Veículo</a>
+			</div>
+			<div class="cars">
+				<% veiculos.forEach(produto =>{%>
+				<div class="car">
+					<figure>
+						<img src="<%= produto.foto %>" alt="Foto do Carro" />
+					</figure>
+					<div>
+						<h2><%= produto.nome %></h2>
+					</div>
+					<div class="description">
+						<ul>
+							<li>Marca: <span><%= produto.marca %> </span></li>
+							<li>Cor: <span><%= produto.cor %></span> </li>
+							<li>Diária: <span>R$<%= produto.diaria %></span> </lii>
+						</ul>
+					</div>
+					<footer>
+						<a class="edit">Editar</a>
+						<a class="delete">Excluir</a>
+					</footer>
+				</div>
+				<%}) %>
+			</div>
+		</section>
+		<script
+			src="https://kit.fontawesome.com/09c2a18d79.js"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
