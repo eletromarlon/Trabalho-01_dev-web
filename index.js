@@ -28,30 +28,37 @@ server.get("/singup", (req, res) => {
 	res.render("singup", {});
 });
 
-server.post("/singup-cadastrar", (req, res) => {
-	let userData = req.body;
+server.post("/singup-cadastrar", async (req, res) => {
 
+	var userData = req.body;
+	var getUser = await usersRepository.getUsers();
+	var userList = JSON.stringify(getUser); //Transformando JSON em objeto
 	// Debbugs para entender o body
 	// console.log(userData.password[0]);
 	// console.log(userData);
+	
+	let senha = btoa(userData.password[0]); // para converter de volta é atob
 
-	if (userData.password[0] == userData.password[1]) {
-		let users = usersRepository.setUser(
-			// Dados em formato JSON para cadastro no banco
-			{
-				name: userData.name,
-				date: userData.nascimento,
-				telefone: userData.telefone,
-				genero: userData.genero,
-				email: userData.email,
-				password: userData.password[0], // Password em primeira posicao
+	if (userData.password[0] == userData.password[1]){
+		if (userList.indexOf(userData.email) !== -1){
+			//console.log("E-mail já utilizado!!");
+			res.render("recoveryPassword", {});
+		} else {
+			let users = await usersRepository.setUser(
+				// Dados em formato JSON para cadastro no banco
+				{
+					"name" : userData.name,
+					"date" : userData.nascimento,
+					"telefone" : userData.telefone,
+					"genero" : userData.genero,
+					"email": userData.email,
+					"password" : senha // Password em primeira posicao
+				}
+			);
+			if (users){
+				res.render("singin", {}); // Caso users seja true redireciona para "singin"
 			}
-		);
-		if (users) {
-			res.render("singin", {}); // Caso users seja true redireciona para "singin"
 		}
-	} else {
-		res.render("singup", {}); // Caso password errado retorna para "singup"
 	}
 });
 
