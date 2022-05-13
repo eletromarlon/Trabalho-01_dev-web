@@ -8,6 +8,15 @@ class UsersRepository {
 		let insertUser = await db.collection("users").insertOne(dados) // Insere um dado em uma colecao
 		return true; //retorna verdade caso tudo tenha funcionado certo
 	}
+
+	async getUsers() {
+		let db = await database.connect();
+		let usersCollection = await db
+			.collection("users")
+			.find()
+			.toArray();
+		return usersCollection;
+	}
 }
 
 export const usersRepository = new UsersRepository();
