@@ -20,6 +20,7 @@ section .cars .car footer {
 	display: flex;
 	flex-flow: wrap row;
 	justify-content: space-between;
+	margin-top: 1rem;
 }
 section .cars .car footer a {
 	font: normal normal 400 1.125rem/1.5rem "Poppins", sans-serif;
