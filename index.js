@@ -24,6 +24,17 @@ server.get("/singin", (req, res) => {
 	res.render("singin", {});
 });
 
+server.post("/singin", (req, res) => {
+	//verificar se o usuario é válido
+	let user = false;
+	if(user){
+		res.render("loja", {}); //caso o usuario exista vai para /loja
+	}else{
+		res.render("alert", {}); 
+	}
+	
+});
+
 server.get("/singup", (req, res) => {
 	res.render("singup", {});
 });
