@@ -1,6 +1,5 @@
 import { database } from "../db.js";
 
-
 // Classe para cadastro de usuários no banco;
 class UsersRepository {
 	async setUser(dados) { 
@@ -16,6 +15,12 @@ class UsersRepository {
 			.find()
 			.toArray();
 		return usersCollection;
+	}
+	
+	async getUser(email, password){
+		let db = await database.connect();
+		let user = await db.collection('users').findOne({email, password})
+		return user
 	}
 }
 

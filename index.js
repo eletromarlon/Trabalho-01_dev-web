@@ -5,16 +5,28 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { sendMail } from "./src/sendEmail.js";
+import basicAuth from 'express-basic-auth'
 
+const server = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const db = await database.connect(); // conecta ao banco de dados
-const server = express();
 
 server.use(express.urlencoded({ extended: true })); //habilita o uso do post dentro das rotas
 server.use(express.static(path.join(__dirname + "/public"))); //habilita o uso de arquivos estaticos
 server.set("views", path.join(__dirname + "/src/views")); //define a pasta de views
 server.set("view engine", "ejs"); //define o motor de views
+
+const mongoAuthorizer = (name, password, cb) => {
+	
+	let status = 1;
+	password = btoa(password); 
+	db.collection('users').findOne({name, password, status}).then(user => {
+		return cb(null, !!user)
+	});
+}
+
+server.use('/admloja', basicAuth({authorizer: mongoAuthorizer, authorizeAsync: true, challenge: true}))
 
 server.get("/", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
@@ -22,16 +34,17 @@ server.get("/", async (req, res) => {
 });
 
 server.get("/singin", (req, res) => {
-	res.render("singin", {});
+	res.render("singin", {erroLogin:''});
 });
 
-server.post("/singin", (req, res) => {
+server.post("/singin", async (req, res) => {
 	//verificar se o usuario é válido
-	let user = false;
+	let user = await usersRepository.getUser(req.body.email, btoa(req.body.password));
+	
 	if (user) {
-		res.render("loja", {}); //caso o usuario exista vai para /loja
+		res.render("loja", {})
 	} else {
-		res.render("alert", {});
+		res.render("singin", {erroLogin :'Atenção, dados Inválidos!!!'})
 	}
 });
 
@@ -68,6 +81,7 @@ server.post("/recoveryPasswd", async (req, res) => {
 
 server.post("/singup-cadastrar", async (req, res) => {
 	var userData = req.body;
+	userData.status = 0;
 	var getUser = await usersRepository.getUsers();
 	var userList = JSON.stringify(getUser); //Transformando JSON em objeto
 	// Debbugs para entender o body
@@ -90,10 +104,11 @@ server.post("/singup-cadastrar", async (req, res) => {
 					genero: userData.genero,
 					email: userData.email,
 					password: senha, // Password em primeira posicao
+					status:userData.status
 				}
 			);
 			if (users) {
-				res.render("singin", {}); // Caso users seja true redireciona para "singin"
+				res.render("singin", {erroLogin: ''}); // Caso users seja true redireciona para "singin"
 			}
 		}
 	}
@@ -104,6 +119,7 @@ server.get("/admin", (req, res) => {
 });
 
 server.get("/admloja", async (req, res) => {
+	let basic = Buffer.from(req.headers.authorization.split(' ')[1], 'base64').toString().split(':')
 	let veiculos = await veiculosRepository.getVeiculos();
 	res.render("admLoja", { veiculos });
 });
