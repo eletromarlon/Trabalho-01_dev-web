@@ -20,6 +20,10 @@ header figure {
 	gap: 1.4256rem;
 }
 
+header a {
+	text-decoration: none;
+}
+
 header figure h1 {
 	color: #f54a48;
 	font: normal normal 600 2.375rem/4.875rem "Poppins", sans-serif;

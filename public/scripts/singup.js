@@ -102,6 +102,8 @@ const confirmarDados = () => {
 	if (
 		dadosPessoais &&
 		password.value === password2.value &&
+		password.value != "" &&
+		password2.value != "" &&
 		email.value.indexOf("@") > -1
 	) {
 		const Toast = Swal.mixin({

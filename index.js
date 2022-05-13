@@ -34,8 +34,12 @@ server.post("/singin", (req, res) => {
 	}
 });
 
+server.get("/recovery", (req, res) => {
+	res.render("recoveryPassword", { error: false });
+});
+
 server.get("/singup", (req, res) => {
-	res.render("singup", {});
+	res.render("singup");
 });
 
 server.post("/singup-cadastrar", async (req, res) => {
@@ -51,7 +55,7 @@ server.post("/singup-cadastrar", async (req, res) => {
 	if (userData.password[0] == userData.password[1]) {
 		if (userList.indexOf(userData.email) !== -1) {
 			//console.log("E-mail já utilizado!!");
-			res.render("recoveryPassword", {});
+			res.render("recoveryPassword", { error: true });
 		} else {
 			let users = await usersRepository.setUser(
 				// Dados em formato JSON para cadastro no banco

@@ -44,3 +44,9 @@ section form button {
 	font: normal normal 600 0.875rem/1.05rem "Poppins", sans-serif;
 	width: 100%;
 }
+
+section form fieldset h3 {
+	font: normal normal 600 0.875rem/1.05rem "Poppins", sans-serif;
+	color: #3c3c3c;
+	margin-bottom: 1rem;
+}
