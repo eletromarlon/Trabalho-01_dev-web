@@ -17,6 +17,12 @@ class VeiculosRepository {
 			.deleteOne({ _id: id });
 		return true;
 	}
+
+	async setVeiculo(dados) {
+		let db = await database.connect(); // Conecta-se com o banco
+		let insertUser = await db.collection("veiculo").insertOne(dados); // Insere um dado em uma colecao
+		return true; //retorna verdade caso tudo tenha funcionado certo
+	}
 }
 
 export const veiculosRepository = new VeiculosRepository();
