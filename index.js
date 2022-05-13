@@ -4,6 +4,7 @@ import { usersRepository } from "./src/database/users.js";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import { sendMail } from "./src/sendEmail.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -40,6 +41,29 @@ server.get("/recovery", (req, res) => {
 
 server.get("/singup", (req, res) => {
 	res.render("singup");
+});
+
+server.post("/recoveryPasswd", async (req, res) => {
+	var email = req.body.email;
+	var getUser = await usersRepository.getUsers();
+	//var userList = JSON.stringify(getUser);
+	var numElementos = Object.keys(getUser).length;
+
+	for (let i = 0; i < numElementos; i++) {
+		if (getUser[i].email == email){
+			var senha = getUser[i].password;
+		}
+	}
+
+	if (senha) {
+		senha = atob(senha);
+		sendMail.run(senha, email);
+	} else {
+		res.send("<h1>Email não encontrado<h1>")
+	}
+	// console.log("email em getUser[0] ",getUser[0].email);
+
+	res.render("singin", {});
 });
 
 server.post("/singup-cadastrar", async (req, res) => {
@@ -96,6 +120,7 @@ server.get("/veiculoDeletado", async (req, res) => {
 	let veiculos = await veiculosRepository.deleteVeiculo(id);
 	res.redirect("/admloja");
 });
+
 server.listen(3000, () => {
 	console.log(`Server is running on port 3000`);
 });
