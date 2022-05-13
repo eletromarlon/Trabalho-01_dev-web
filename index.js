@@ -27,12 +27,11 @@ server.get("/singin", (req, res) => {
 server.post("/singin", (req, res) => {
 	//verificar se o usuario é válido
 	let user = false;
-	if(user){
+	if (user) {
 		res.render("loja", {}); //caso o usuario exista vai para /loja
-	}else{
-		res.render("alert", {}); 
+	} else {
+		res.render("alert", {});
 	}
-	
 });
 
 server.get("/singup", (req, res) => {
@@ -40,33 +39,32 @@ server.get("/singup", (req, res) => {
 });
 
 server.post("/singup-cadastrar", async (req, res) => {
-
 	var userData = req.body;
 	var getUser = await usersRepository.getUsers();
 	var userList = JSON.stringify(getUser); //Transformando JSON em objeto
 	// Debbugs para entender o body
 	// console.log(userData.password[0]);
 	// console.log(userData);
-	
+
 	let senha = btoa(userData.password[0]); // para converter de volta é atob
 
-	if (userData.password[0] == userData.password[1]){
-		if (userList.indexOf(userData.email) !== -1){
+	if (userData.password[0] == userData.password[1]) {
+		if (userList.indexOf(userData.email) !== -1) {
 			//console.log("E-mail já utilizado!!");
 			res.render("recoveryPassword", {});
 		} else {
 			let users = await usersRepository.setUser(
 				// Dados em formato JSON para cadastro no banco
 				{
-					"name" : userData.name,
-					"date" : userData.nascimento,
-					"telefone" : userData.telefone,
-					"genero" : userData.genero,
-					"email": userData.email,
-					"password" : senha // Password em primeira posicao
+					name: userData.name,
+					date: userData.nascimento,
+					telefone: userData.telefone,
+					genero: userData.genero,
+					email: userData.email,
+					password: senha, // Password em primeira posicao
 				}
 			);
-			if (users){
+			if (users) {
 				res.render("singin", {}); // Caso users seja true redireciona para "singin"
 			}
 		}
@@ -81,7 +79,19 @@ server.get("/admloja", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
 	res.render("admLoja", { veiculos });
 });
-
+server.get("/editLoja", async (req, res) => {
+	let veiculos = await veiculosRepository.getVeiculos();
+	let id = req.query.id;
+	res.render("editLoja", { veiculos, id });
+});
+server.get("/addLoja", (req, res) => {
+	res.render("addLoja", {});
+});
+server.get("/veiculoDeletado", async (req, res) => {
+	let id = req.query.excluir;
+	let veiculos = await veiculosRepository.deleteVeiculo(id);
+	res.redirect("/admloja");
+});
 server.listen(3000, () => {
 	console.log(`Server is running on port 3000`);
 });

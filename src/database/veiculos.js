@@ -9,6 +9,14 @@ class VeiculosRepository {
 			.toArray();
 		return veiculosCollection;
 	}
+
+	async deleteVeiculo(id) {
+		let db = await database.connect();
+		let veiculosCollection = await db
+			.collection("veiculo")
+			.deleteOne({ _id: id });
+		return true;
+	}
 }
 
 export const veiculosRepository = new VeiculosRepository();

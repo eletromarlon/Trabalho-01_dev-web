@@ -4,6 +4,9 @@ section .header {
 	justify-content: space-between;
 	align-items: center;
 }
+a {
+	text-decoration: none;
+}
 section .header a {
 	font: normal normal 400 1.125rem/1.5rem "Poppins", sans-serif;
 	cursor: pointer;

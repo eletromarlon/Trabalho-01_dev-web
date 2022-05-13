@@ -27,7 +27,7 @@
 		<section>
 			<div class="header">
 				<h2>Seus Veículos</h2>
-				<a>Adicionar Veículo</a>
+				<a href="/addLoja">Adicionar Veículo</a>
 			</div>
 			<div class="cars">
 				<% veiculos.forEach(produto =>{%>
@@ -46,16 +46,19 @@
 						</ul>
 					</div>
 					<footer>
-						<a class="edit">Editar</a>
-						<a class="delete">Excluir</a>
+						<a href="/editLoja?id=<%= produto._id %> " class="edit">Editar</a>
+						<a class="delete" id="<%= produto._id %> ">Excluir</a>
 					</footer>
 				</div>
 				<%}) %>
 			</div>
 		</section>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="sweetalert2.all.min.js"></script>
 		<script
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
 		></script>
+		<script src="scripts/admLoja.js"></script>
 	</body>
 </html>

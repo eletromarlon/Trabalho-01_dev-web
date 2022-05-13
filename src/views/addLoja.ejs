@@ -25,51 +25,27 @@
 			</nav>
 		</header>
 		<section>
-			<h2>Editar Dados do Veículo</h2>
+			<h2>Cadastrar novo Veículo</h2>
 			<form action="" method="post">
 				<fieldset>
-					<legend>Formulário de Edição</legend>
-					<% for(let i = 0; i <veiculos.length; i++) {
-					if(veiculos[i]._id== id) {%>
+					<legend>Formulário de Cadastrar</legend>
 					<div class="input">
 						<label for="nome">Nome</label>
-						<input
-							type="text"
-							name="nome"
-							id="nome"
-							value="<%= veiculos[i].nome %>"
-						/>
+						<input type="text" name="nome" id="nome" />
 					</div>
 					<div class="input">
 						<label for="marca">Marca</label>
-						<input
-							type="text"
-							name="marca"
-							id="marca"
-							value="<%= veiculos[i].marca %>"
-						/>
+						<input type="text" name="marca" id="marca" />
 					</div>
 					<div class="input">
 						<label for="cor">Cor</label>
-						<input
-							type="text"
-							name="cor"
-							id="cor"
-							value="<%=
-							veiculos[i].cor %>"
-						/>
+						<input type="text" name="cor" id="cor" />
 					</div>
 					<div class="input">
 						<label for="diaria">Diária</label>
-						<input
-							type="text"
-							name="diaria"
-							id="diaria"
-							value="<%= veiculos[i].diaria %>"
-						/>
+						<input type="text" name="diaria" id="diaria" />
 					</div>
-					<button type="submit">Enviar Dados</button>
-					<%}%> <%}%>
+					<button type="submit">Cadastrar Veículo</button>
 				</fieldset>
 			</form>
 		</section>
