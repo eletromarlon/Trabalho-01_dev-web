@@ -149,6 +149,12 @@ server.post("/lojabuscar", async (req, res) => {
 	res.render("loja", { veiculos: resultado });
 });
 
+server.get("/loja-alugar", async (req, res) => {
+	let veiculos = await veiculosRepository.getVeiculos();
+	let car = req.query.car;
+	res.render("lojaAlugar", { veiculos, car });
+});
+
 // Parte do Administrator
 server.get("/admin", (req, res) => {
 	res.render("admin", {});

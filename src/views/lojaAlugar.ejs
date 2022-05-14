@@ -19,15 +19,14 @@
 					<h1>LocaCar</h1>
 				</figure>
 			</a>
-			<div class="input">
+			<!-- <div class="input">
 				<form action="/lojabuscar" method="post">
 					<input type="text" name="busca" placeholder="Buscar" />
 					<button type="submit">
 						<i class="fa-solid fa-magnifying-glass"></i>
 					</button>
 				</form>
-
-			</div>
+			</div> -->
 			<nav>
 				<a href="/admloja">Loja</a>
 				<a>Meus Aluguéis</a>
@@ -38,31 +37,57 @@
 			</nav>
 		</header>
 		<section>
-			<h2>Automóveis Disponíveis</h2>
-			<div class="cars">
-				<% veiculos.forEach(produto =>{%>
-				<div class="car">
-					<figure>
-						<img src="<%= produto.foto %>" alt="Foto do Carro" />
-					</figure>
-					<div>
-						<h2><%= produto.nome %></h2>
+			<h2>Alugar Carro</h2>
+			<form action="" method="post">
+				<fieldset>
+					<legend>Formulário de aluguel</legend>
+					<% for(let i = 0; i <veiculos.length; i++) {
+					if(veiculos[i]._id== car) {%>
+					<div class="input">
+						<label for="nome">Nome</label>
+						<input
+							type="text"
+							name="nome"
+							id="nome"
+							disabled
+							value="<%= veiculos[i].nome %>"
+						/>
 					</div>
-					<div class="description">
-						<ul>
-							<li>Marca: <span><%= produto.marca %> </span></li>
-							<li>Cor: <span><%= produto.cor %></span> </li>
-							<li>Diária: <span>R$<%= produto.diaria %></span> </lii>
-						</ul>
+					<div class="input">
+						<label for="marca">Marca</label>
+						<input
+							type="text"
+							name="marca"
+							id="marca"
+							disabled
+							value="<%= veiculos[i].marca %>"
+						/>
 					</div>
-					<footer>
-						<a href="/loja-alugar?car=<%= produto._id %>">
-							<button>Alugar</button>
-						</a>
-					</footer>
-				</div>
-				<%}) %>
-			</div>
+					<div class="input">
+						<label for="cor">Cor</label>
+						<input
+							type="text"
+							name="cor"
+							id="cor"
+							disabled
+							value="<%=
+								veiculos[i].cor %>"
+						/>
+					</div>
+					<div class="input">
+						<label for="diaria">Diária</label>
+						<input
+							type="text"
+							name="diaria"
+							id="diaria"
+							disabled
+							value="<%= veiculos[i].diaria %>"
+						/>
+					</div>
+					<button type="submit">Enviar Dados</button>
+					<%}%> <%}%>
+				</fieldset>
+			</form>
 		</section>
 		<script
 			src="https://kit.fontawesome.com/09c2a18d79.js"
