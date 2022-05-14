@@ -27,24 +27,24 @@
 		</header>
 		<section>
 			<h2>Cadastrar novo Veículo</h2>
-			<form action="" method="post">
+			<form action="/addLoja" method="post" enctype="multipart/form-data">
 				<fieldset>
 					<legend>Formulário de Cadastrar</legend>
 					<div class="input">
 						<label for="nome">Nome</label>
-						<input type="text" name="nome" id="nome" required />
+						<input type="text" name="nome" id="nome" value="lala" required />
 					</div>
 					<div class="input">
 						<label for="marca">Marca</label>
-						<input type="text" name="marca" id="marca" required />
+						<input type="text" name="marca" id="marca" value="fiat" required />
 					</div>
 					<div class="input">
 						<label for="cor">Cor</label>
-						<input type="text" name="cor" id="cor" required />
+						<input type="text" name="cor" id="cor" value="red" required />
 					</div>
 					<div class="input">
 						<label for="diaria">Diária</label>
-						<input type="text" name="diaria" id="diaria" required />
+						<input type="text" name="diaria" id="diaria" value="100.00" required />
 					</div>
 					<div class="input">
 						<label for="upload">Upload</label>
@@ -54,9 +54,9 @@
 							id="upload"
 							name="filepond"
 							accept="image/png, image/jpeg"
-							required
 						/>
 					</div>
+					<div class="input">
 					<textarea
 						name="foto"
 						id="foto"
@@ -65,16 +65,20 @@
 						cols="30"
 						rows="10"
 					></textarea>
+					</div>
 					<button type="submit">Cadastrar Veículo</button>
 				</fieldset>
+				
 			</form>
 		</section>
 		<script
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
 		></script>
+		
+		
 
-		<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+		<!--<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
 		<script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
 		<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
 		<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
@@ -82,7 +86,7 @@
 		<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
 		<script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
 		<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-
+		-->
 		<script src="scripts/addLoja.js"></script>
 	</body>
 </html>

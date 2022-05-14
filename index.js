@@ -6,11 +6,44 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { sendMail } from "./src/sendEmail.js";
 import basicAuth from "express-basic-auth";
+import multerIMPORT from "multer";
 
 const server = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const db = await database.connect(); // conecta ao banco de dados
+const multer = multerIMPORT;
+
+
+// Enable CORS
+server.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
+
+// Configuração de armazenamento
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+		//pasta de destino
+        cb(null, 'public/images/')
+    },
+    filename: function (req, file, cb) {
+        // Extração da extensão do arquivo original:
+        const extensaoArquivo = file.originalname.split('.')[1];
+
+        // Cria um código randômico que será o nome do arquivo
+        //const novoNomeArquivo = require('crypto')
+          //  .randomBytes(64)
+            //.toString('hex');
+
+        // Indica o novo nome do arquivo:
+        cb(null, `${file.originalname.split('.')[0]}.${extensaoArquivo}`)
+    }
+});
+
+const upload = multer({ storage });
 
 server.use(express.urlencoded({ extended: true })); //habilita o uso do post dentro das rotas
 server.use(express.static(path.join(__dirname + "/public"))); //habilita o uso de arquivos estaticos
@@ -175,18 +208,23 @@ server.get("/editLoja", async (req, res) => {
 server.get("/addLoja", (req, res) => {
 	res.render("addLoja", { cad: false });
 });
-server.post("/addLoja", async (req, res) => {
+
+server.post("/addLoja", upload.single('filepond'), async (req, res, next) => {	
+	
+	let src = "../images/" + req.file.filename;
+	
 	let veiculos = await veiculosRepository.setVeiculo({
 		nome: req.body.nome,
 		marca: req.body.marca,
 		cor: req.body.cor,
 		diaria: req.body.diaria,
+		img: src
 	});
-	if (veiculos) {
-		res.redirect("/addloja", { cad: true });
-	} else {
-		res.redirect("/addloja", { cad: false });
-	}
+	//if (veiculos) {
+	//	res.redirect("/addloja", { cad: true });
+	//} else {
+	//	res.redirect("/addloja", { cad: false });
+	//}
 });
 
 server.listen(3000, () => {

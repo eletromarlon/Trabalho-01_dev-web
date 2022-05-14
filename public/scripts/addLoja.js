@@ -12,10 +12,10 @@ FilePond.registerPlugin(
 // create() to turn it into a pond
 FilePond.create(document.querySelector("input[type=file]"), {
 	labelIdle: `Anexar Foto do Veículo <span class="filepond--label-action">Buscar</span>`,
-	imagePreviewHeight: 170,
+	imagePreviewHeight: 100,
 	imageCropAspectRatio: "3:1",
-	imageResizeTargetWidth: 200,
-	imageResizeTargetHeight: 200,
+	imageResizeTargetWidth: 100,
+	imageResizeTargetHeight: 100,
 	stylePanelLayout: "compact",
 	styleLoadIndicatorPosition: "center bottom",
 	styleProgressIndicatorPosition: "right bottom",
