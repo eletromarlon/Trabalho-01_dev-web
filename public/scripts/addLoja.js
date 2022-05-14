@@ -1,4 +1,4 @@
-FilePond.registerPlugin(
+/* FilePond.registerPlugin(
 	FilePondPluginFileValidateType,
 	FilePondPluginImageExifOrientation,
 	FilePondPluginImagePreview,
@@ -10,7 +10,7 @@ FilePond.registerPlugin(
 
 // Select the file input and use
 // create() to turn it into a pond
-FilePond.create(document.querySelector("input[type=file]"), {
+FilePond.create(document.querySelector("#upload"), {
 	labelIdle: `Anexar Foto do Veículo <span class="filepond--label-action">Buscar</span>`,
 	imagePreviewHeight: 100,
 	imageCropAspectRatio: "3:1",
@@ -21,7 +21,7 @@ FilePond.create(document.querySelector("input[type=file]"), {
 	styleProgressIndicatorPosition: "right bottom",
 	styleButtonRemoveItemPosition: "left bottom",
 	styleButtonProcessItemPosition: "right bottom",
-});
+}); 
 
 document.querySelector("#upload").addEventListener("change", (event) => {
 	let reader = new FileReader();
@@ -30,4 +30,17 @@ document.querySelector("#upload").addEventListener("change", (event) => {
 	reader.onloadend = () => {
 		document.querySelector(".foto").value = reader.result;
 	};
+}); */
+
+FilePond.registerPlugin(
+	FilePondPluginImagePreview,
+	FilePondPluginImageExifOrientation,
+	FilePondPluginFileValidateSize,
+	FilePondPluginImageEdit
+);
+
+// Select the file input and use
+// create() to turn it into a pond
+FilePond.create(document.querySelector("#upload"), {
+	labelIdle: `Anexar Foto do Veículo <span class="filepond--label-action">Buscar</span>`,
 });

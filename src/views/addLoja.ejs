@@ -8,6 +8,19 @@
 		<link rel="stylesheet" href="styles/globalStyles.css" />
 		<link rel="stylesheet" href="styles/index.css" />
 		<link rel="stylesheet" href="styles/editLoja.css" />
+		<link
+			href="https://unpkg.com/filepond/dist/filepond.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css"
+			rel="stylesheet"
+		/>
+
 		<%- include("./favicon.ejs") %>
 	</head>
 	<body>
@@ -32,61 +45,63 @@
 					<legend>Formulário de Cadastrar</legend>
 					<div class="input">
 						<label for="nome">Nome</label>
-						<input type="text" name="nome" id="nome" value="lala" required />
+						<input type="text" name="nome" id="nome" required />
 					</div>
 					<div class="input">
 						<label for="marca">Marca</label>
-						<input type="text" name="marca" id="marca" value="fiat" required />
+						<input type="text" name="marca" id="marca" required />
 					</div>
 					<div class="input">
 						<label for="cor">Cor</label>
-						<input type="text" name="cor" id="cor" value="red" required />
+						<input type="text" name="cor" id="cor" required />
 					</div>
 					<div class="input">
 						<label for="diaria">Diária</label>
-						<input type="text" name="diaria" id="diaria" value="100.00" required />
+						<input type="text" name="diaria" id="diaria" required />
 					</div>
 					<div class="input">
 						<label for="upload">Upload</label>
-						<input
+						<!-- <input
 							type="file"
 							class="filepond"
 							id="upload"
 							name="filepond"
 							accept="image/png, image/jpeg"
+						/> -->
+						<input
+							type="file"
+							class="filepond"
+							name="filepond"
+							id="upload"
+							data-max-files="1"
+							accept="image/png, image/jpeg"
 						/>
 					</div>
 					<div class="input">
-					<textarea
-						name="foto"
-						id="foto"
-						class="foto"
-						placeholder="foto"
-						cols="30"
-						rows="10"
-					></textarea>
+						<textarea
+							name="foto"
+							id="foto"
+							class="foto"
+							placeholder="foto"
+							cols="30"
+							rows="10"
+							hidden
+						></textarea>
 					</div>
 					<button type="submit">Cadastrar Veículo</button>
 				</fieldset>
-				
 			</form>
 		</section>
 		<script
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
 		></script>
-		
-		
 
-		<!--<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
-		<script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+		<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
 		<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-		<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-		<script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
-		<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+		<script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
 		<script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
 		<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-		-->
 		<script src="scripts/addLoja.js"></script>
 	</body>
 </html>
