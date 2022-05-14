@@ -36,13 +36,15 @@ server.use(
 	})
 );
 
+//Página inicial
 server.get("/", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
 	res.render("index", { veiculos });
 });
 
+// Parte do Login e Cadastrar
 server.get("/singin", (req, res) => {
-	res.render("singin", { erroLogin: "" });
+	res.render("singin", { erroLogin: false });
 });
 
 server.post("/singin", async (req, res) => {
@@ -53,9 +55,10 @@ server.post("/singin", async (req, res) => {
 	);
 
 	if (user) {
-		res.render("loja", {});
+		let veiculos = await veiculosRepository.getVeiculos();
+		res.render("loja", { veiculos });
 	} else {
-		res.render("singin", { erroLogin: "Atenção, dados Inválidos!!!" });
+		res.render("singin", { erroLogin: true });
 	}
 });
 
@@ -125,6 +128,28 @@ server.post("/singup-cadastrar", async (req, res) => {
 	}
 });
 
+// Parte do Usuário
+server.get("/loja", async (req, res) => {
+	let veiculos = await veiculosRepository.getVeiculos();
+	res.render("loja", { veiculos });
+});
+
+server.post("/lojabuscar", async (req, res) => {
+	let veiculos = await veiculosRepository.getVeiculos();
+	let busca = req.body.busca;
+	let resultado = [];
+	veiculos.forEach((veiculo) => {
+		if (
+			veiculo.nome.indexOf(busca) !== -1 ||
+			veiculo.marca.indexOf(busca) !== -1
+		) {
+			resultado.push(veiculo);
+		}
+	});
+	res.render("loja", { veiculos: resultado });
+});
+
+// Parte do Administrator
 server.get("/admin", (req, res) => {
 	res.render("admin", {});
 });

@@ -1,0 +1,46 @@
+header .input {
+	width: 20%;
+}
+header .input form {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+header .input form input {
+	font: normal normal 400 0.8125rem/0.85rem "Poppins", sans-serif;
+	padding: 0.5rem 0.2rem;
+	background-color: #f9f9f9;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	border-right: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	width: 90%;
+}
+header.input input::placeholder {
+	color: #3c3c3c;
+}
+
+header .input form button {
+	width: 10%;
+	color: #3c3c3c;
+	background-color: #f9f9f9;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	font-size: 1rem;
+	border-left: none;
+}
+
+section footer button {
+	background-color: #f54a48;
+	text-align: center;
+	color: #fff;
+	border: none;
+	width: 100%;
+	margin-top: 1rem;
+	font: normal normal 400 1.125rem/1.5rem "Poppins", sans-serif;
+	padding: 5px 0;
+	border-radius: 3px;
+}

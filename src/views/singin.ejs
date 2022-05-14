@@ -7,6 +7,10 @@
 		<title>LocaCar - Locadora de Veí­culos</title>
 		<link rel="stylesheet" href="styles/globalStyles.css" />
 		<link rel="stylesheet" href="styles/singin.css" />
+
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="sweetalert2.all.min.js"></script>
+		<link rel="stylesheet" href="styles/swalAlert.css" />
 	</head>
 	<body>
 		<section>
@@ -68,9 +72,25 @@
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
 		></script>
-		
+		<%if(erroLogin){%>
+		<script>
+			const Toast = Swal.mixin({
+				toast: true,
+				position: "top-end",
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				didOpen: (toast) => {
+					toast.addEventListener("mouseenter", Swal.stopTimer);
+					toast.addEventListener("mouseleave", Swal.resumeTimer);
+				},
+			});
+
+			Toast.fire({
+				icon: "error",
+				title: "Não foi possível efetuar o login!",
+			});
+		</script>
+		<%}%>
 	</body>
 </html>
-<%if(erroLogin != ""){%>
-	<script> alert("Atenção, dados Inválidos!!!")</script>
-<%}%>

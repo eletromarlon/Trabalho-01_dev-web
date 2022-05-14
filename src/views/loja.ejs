@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LocaCar - Locadora de Veículos</title>
+		<link rel="stylesheet" href="styles/globalStyles.css" />
+		<link rel="stylesheet" href="styles/index.css" />
+		<link rel="stylesheet" href="styles/editLoja.css" />
+		<link rel="stylesheet" href="styles/loja.css" />
+	</head>
+	<body>
+		<header>
+			<a href="/loja">
+				<figure>
+					<img src="images/logo.svg" alt="Logo" />
+					<h1>LocaCar</h1>
+				</figure>
+			</a>
+			<div class="input">
+				<form action="/lojabuscar" method="post">
+					<input type="text" name="busca" placeholder="Buscar" />
+					<button type="submit">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button>
+				</form>
+
+			</div>
+			<nav>
+				<a href="/admloja">Loja</a>
+				<a>Meus Aluguéis</a>
+				<a>Minha Conta</a>
+				<a href="/" class="cadastrar"
+					>Sair <i class="fa-solid fa-arrow-right-from-bracket"></i
+				></a>
+			</nav>
+		</header>
+		<section>
+			<h2>Automóveis Disponíveis</h2>
+			<div class="cars">
+				<% veiculos.forEach(produto =>{%>
+				<div class="car">
+					<figure>
+						<img src="<%= produto.foto %>" alt="Foto do Carro" />
+					</figure>
+					<div>
+						<h2><%= produto.nome %></h2>
+					</div>
+					<div class="description">
+						<ul>
+							<li>Marca: <span><%= produto.marca %> </span></li>
+							<li>Cor: <span><%= produto.cor %></span> </li>
+							<li>Diária: <span>R$<%= produto.diaria %></span> </lii>
+						</ul>
+					</div>
+					<footer>
+						<a href="/loja?car=<%= produto.id %>">
+							<button>Alugar</button>
+						</a>
+					</footer>
+				</div>
+				<%}) %>
+			</div>
+		</section>
+		<script
+			src="https://kit.fontawesome.com/09c2a18d79.js"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
