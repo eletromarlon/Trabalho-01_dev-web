@@ -22,15 +22,7 @@ FilePond.create(document.querySelector("#upload"), {
 	styleButtonRemoveItemPosition: "left bottom",
 	styleButtonProcessItemPosition: "right bottom",
 }); 
-
-document.querySelector("#upload").addEventListener("change", (event) => {
-	let reader = new FileReader();
-	let file = event.target.files[0];
-	reader.readAsDataURL(file);
-	reader.onloadend = () => {
-		document.querySelector(".foto").value = reader.result;
-	};
-}); */
+*/
 
 FilePond.registerPlugin(
 	FilePondPluginImagePreview,
@@ -41,6 +33,16 @@ FilePond.registerPlugin(
 
 // Select the file input and use
 // create() to turn it into a pond
-FilePond.create(document.querySelector("#upload"), {
+
+const pond = FilePond.create(document.querySelector("#upload"), {
 	labelIdle: `Anexar Foto do Veículo <span class="filepond--label-action">Buscar</span>`,
+});
+
+pond.setOptions({
+	imageCropAspectRatio: "3:1",
+});
+
+document.addEventListener("FilePond:addfile", (e) => {
+	const arquivos = pond.getFiles();
+	document.querySelector("#foto").value = arquivos[0].file.name;
 });
