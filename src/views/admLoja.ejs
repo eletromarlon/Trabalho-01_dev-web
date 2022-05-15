@@ -53,7 +53,7 @@
 					</div>
 					<footer>
 						<a href="/editLoja?id=<%= produto._id %> " class="edit">Editar</a>
-						<a class="delete" id="<%= produto._id %> ">Excluir</a>
+						<a href="/veiculoDeletado?excluir=<%= produto._id %>"class="delete" id="<%= produto._id %> ">Excluir</a>
 					</footer>
 				</div>
 				<%}) %>

@@ -61,7 +61,6 @@ const mongoAuthorizer = (email, password, cb) => {
 		});
 };
 
-
 server.use(
 	"/admloja",
 	basicAuth({
@@ -206,33 +205,31 @@ server.get("/admloja", async (req, res) => {
 server.get("/editLoja", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
 	let id = req.query.id;
-	
+
 	res.render("editLoja", { veiculos, id });
 });
 
-server.post("/editLoja", upload.single('filepond'), async (req, res) => {
-	
+server.post("/editLoja", upload.single("filepond"), async (req, res) => {
 	let veiculo;
-	
-	if(req.file != undefined){
-		
+
+	if (req.file != undefined) {
 		let src = "/images/" + req.file.filename;
-	
-	    veiculo = await veiculosRepository.updateVeiculo({
+
+		veiculo = await veiculosRepository.updateVeiculo({
 			_id: req.body._id,
 			nome: req.body.nome,
 			marca: req.body.marca,
 			cor: req.body.cor,
 			diaria: req.body.diaria,
-			foto: src
+			foto: src,
 		});
-	}else{
-	    veiculo = await veiculosRepository.updateVeiculo({
+	} else {
+		veiculo = await veiculosRepository.updateVeiculo({
 			_id: req.body._id,
 			nome: req.body.nome,
 			marca: req.body.marca,
 			cor: req.body.cor,
-			diaria: req.body.diaria
+			diaria: req.body.diaria,
 		});
 	}
 	if (veiculo) {
@@ -240,26 +237,24 @@ server.post("/editLoja", upload.single('filepond'), async (req, res) => {
 	} else {
 		res.render("/addloja", { cad: false });
 	}
-	
 });
 
 server.get("/addLoja", (req, res) => {
 	res.render("addLoja", { cad: false });
 });
 
-server.post("/addLoja", upload.single('filepond'), async (req, res, next) => {	
-	
+server.post("/addLoja", upload.single("filepond"), async (req, res, next) => {
 	//console.log(req.file)
-	
+
 	let src = "/images/" + req.file.filename;
-	
+
 	let veiculos = await veiculosRepository.setVeiculo({
 		nome: req.body.nome,
 		marca: req.body.marca,
 		cor: req.body.cor,
 		diaria: req.body.diaria,
 		foto: src,
-		status: 1
+		status: 1,
 	});
 	if (veiculos) {
 		res.redirect("/admLoja");
@@ -268,7 +263,11 @@ server.post("/addLoja", upload.single('filepond'), async (req, res, next) => {
 	}
 });
 
-
+server.get("/veiculoDeletado", async (req, res) => {
+	let id = req.query.excluir;
+	let veiculos = await veiculosRepository.deleteVeiculo(id);
+	res.redirect("/admloja");
+});
 
 server.listen(3000, () => {
 	console.log(`Server is running on port 3000`);
