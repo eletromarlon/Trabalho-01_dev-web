@@ -258,7 +258,8 @@ server.post("/addLoja", upload.single('filepond'), async (req, res, next) => {
 		marca: req.body.marca,
 		cor: req.body.cor,
 		diaria: req.body.diaria,
-		foto: src
+		foto: src,
+		status: 1
 	});
 	if (veiculos) {
 		res.redirect("/admLoja");
