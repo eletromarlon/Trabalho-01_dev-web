@@ -7,9 +7,9 @@ import { fileURLToPath } from "url";
 import { sendMail } from "./src/sendEmail.js";
 import basicAuth from "express-basic-auth";
 import multerIMPORT from "multer";
-import mongo from "mongodb"
+import mongo from "mongodb";
 
-const  ObjectId = mongo.ObjectId;
+const ObjectId = mongo.ObjectId;
 
 const server = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -127,7 +127,7 @@ server.post("/recoveryPasswd", async (req, res) => {
 	}
 	// console.log("email em getUser[0] ",getUser[0].email);
 
-	res.render("singin", {});
+	res.render("singin", { erroLogin: false });
 });
 
 server.post("/singup-cadastrar", async (req, res) => {
@@ -243,18 +243,15 @@ server.post("/editLoja", upload.single("filepond"), async (req, res) => {
 	}
 });
 
-
 server.get("/veiculoDeletado", async (req, res) => {
-	
 	let veiculo = await veiculosRepository.deleteVeiculo(req.query.excluir);
-	
+
 	if (veiculo) {
 		res.redirect("/admLoja");
 	} else {
 		res.render("/addloja", { cad: false });
 	}
 });
-
 
 server.get("/addLoja", (req, res) => {
 	res.render("addLoja", { cad: false });
