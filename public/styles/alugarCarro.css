@@ -12,9 +12,14 @@ section form .input .forma-pagamento .forma {
 	width: 50%;
 	text-align: center;
 	padding: 0.625rem 0;
+	margin: 0.625rem 0;
 }
 section form .input .forma-pagamento .selecionado {
 	background-color: #f54a48;
 	color: #fff;
 	border: 2px solid #f54a48;
+}
+section form #valores {
+	display: flex;
+	flex-direction: column;
 }
