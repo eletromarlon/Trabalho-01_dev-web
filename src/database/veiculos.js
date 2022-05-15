@@ -17,6 +17,12 @@ class VeiculosRepository {
 			.deleteOne({ _id: id });
 		return true;
 	}
+	
+	async updateVeiculo(veiculo){
+		let db = await database.connect(); // Conecta-se com o banco
+		let insertUser = await db.collection("veiculo").updateOne(dados); 
+		return true; 
+	}
 
 	async setVeiculo(dados) {
 		let db = await database.connect(); // Conecta-se com o banco

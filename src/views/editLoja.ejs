@@ -27,7 +27,7 @@
 		</header>
 		<section>
 			<h2>Editar Dados do Veículo</h2>
-			<form action="" method="post">
+			<form action="/admin/editVeiculo" method="post" enctype="multipart/form-data">
 				<fieldset>
 					<legend>Formulário de Edição</legend>
 					<% for(let i = 0; i <veiculos.length; i++) {
@@ -69,6 +69,28 @@
 							value="<%= veiculos[i].diaria %>"
 						/>
 					</div>
+					<div class="input">
+						<label for="upload">Upload</label>
+						<input
+							type="file"
+							class="filepond"
+							id="upload"
+							name="filepond"
+							accept="image/png, image/jpeg"
+						/>
+					</div>
+					<div class="input">
+					<textarea
+						name="foto"
+						id="foto"
+						class="foto"
+						placeholder="foto"
+						cols="30"
+						rows="10" 
+					></textarea>
+					</div>
+					
+					
 					<button type="submit">Enviar Dados</button>
 					<%}%> <%}%>
 				</fieldset>

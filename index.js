@@ -51,15 +51,16 @@ server.use(express.static(path.join(__dirname + "/public"))); //habilita o uso d
 server.set("views", path.join(__dirname + "/src/views")); //define a pasta de views
 server.set("view engine", "ejs"); //define o motor de views
 
-const mongoAuthorizer = (name, password, cb) => {
+const mongoAuthorizer = (email, password, cb) => {
 	let status = 1;
 	password = btoa(password);
 	db.collection("users")
-		.findOne({ name, password, status })
+		.findOne({ email, password, status })
 		.then((user) => {
 			return cb(null, !!user);
 		});
 };
+
 
 server.use(
 	"/admloja",
@@ -210,21 +211,44 @@ server.get("/addLoja", (req, res) => {
 	res.render("addLoja", { cad: false });
 });
 
-server.post("/addLoja", upload.single("filepond"), async (req, res, next) => {
-	let src = "../images/" + req.file.filename;
-
+server.post("/addLoja", upload.single('filepond'), async (req, res, next) => {	
+	
+	//console.log(req.file)
+	
+	let src = "/images/" + req.file.filename;
+	
 	let veiculos = await veiculosRepository.setVeiculo({
 		nome: req.body.nome,
 		marca: req.body.marca,
 		cor: req.body.cor,
 		diaria: req.body.diaria,
-		img: src,
+		foto: src
 	});
-	//if (veiculos) {
-	//	res.redirect("/addloja", { cad: true });
-	//} else {
-	//	res.redirect("/addloja", { cad: false });
-	//}
+	if (veiculos) {
+		res.redirect("/admLoja");
+	} else {
+		res.render("/addloja", { cad: false });
+	}
+});
+
+server.post("/admin/editVeiculo", upload.single('filepond'), async (req, res) => {
+	
+	if(req.file != undefined){
+		let src = "../images/" + req.file.filename;
+	
+		let veiculos = await veiculosRepository.updateVeiculo({
+			nome: req.body.nome,
+			marca: req.body.marca,
+			cor: req.body.cor,
+			diaria: req.body.diaria,
+			img: src
+		});
+	}else{
+	
+		
+	}
+	
+	
 });
 
 server.listen(3000, () => {
