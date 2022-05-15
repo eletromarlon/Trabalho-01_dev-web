@@ -202,11 +202,47 @@ server.get("/admloja", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
 	res.render("admLoja", { veiculos });
 });
+
 server.get("/editLoja", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
 	let id = req.query.id;
+	
 	res.render("editLoja", { veiculos, id });
 });
+
+server.post("/editLoja", upload.single('filepond'), async (req, res) => {
+	
+	let veiculo;
+	
+	if(req.file != undefined){
+		
+		let src = "/images/" + req.file.filename;
+	
+	    veiculo = await veiculosRepository.updateVeiculo({
+			_id: req.body._id,
+			nome: req.body.nome,
+			marca: req.body.marca,
+			cor: req.body.cor,
+			diaria: req.body.diaria,
+			foto: src
+		});
+	}else{
+	    veiculo = await veiculosRepository.updateVeiculo({
+			_id: req.body._id,
+			nome: req.body.nome,
+			marca: req.body.marca,
+			cor: req.body.cor,
+			diaria: req.body.diaria
+		});
+	}
+	if (veiculo) {
+		res.redirect("/admLoja");
+	} else {
+		res.render("/addloja", { cad: false });
+	}
+	
+});
+
 server.get("/addLoja", (req, res) => {
 	res.render("addLoja", { cad: false });
 });
@@ -231,25 +267,7 @@ server.post("/addLoja", upload.single('filepond'), async (req, res, next) => {
 	}
 });
 
-server.post("/admin/editVeiculo", upload.single('filepond'), async (req, res) => {
-	
-	if(req.file != undefined){
-		let src = "../images/" + req.file.filename;
-	
-		let veiculos = await veiculosRepository.updateVeiculo({
-			nome: req.body.nome,
-			marca: req.body.marca,
-			cor: req.body.cor,
-			diaria: req.body.diaria,
-			img: src
-		});
-	}else{
-	
-		
-	}
-	
-	
-});
+
 
 server.listen(3000, () => {
 	console.log(`Server is running on port 3000`);

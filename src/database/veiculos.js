@@ -20,7 +20,24 @@ class VeiculosRepository {
 	
 	async updateVeiculo(veiculo){
 		let db = await database.connect(); // Conecta-se com o banco
-		let insertUser = await db.collection("veiculo").updateOne(dados); 
+		
+		console.log(veiculo)
+		
+		if(veiculo.foto != undefined){
+			
+			
+			
+			let updateVeiculo = await db.collection("veiculo").updateOne(
+				{_id:veiculo._id},//CRITÉRIO DE UPDATE
+				{$set:{nome:veiculo.nome, marca:veiculo.marca, cor:veiculo.cor, diaria:veiculo.diaria, foto:veiculo.foto}}); 
+			
+		}else{
+			
+			let updateVeiculo = await db.collection("veiculo").updateOne(
+				{_id:veiculo._id},//CRITÉRIO DE UPDATE
+				{$set:{nome:veiculo.nome, marca:veiculo.marca, cor:veiculo.cor, diaria:veiculo.diaria}}); 
+		}
+		
 		return true; 
 	}
 
