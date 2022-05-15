@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="styles/index.css" />
 		<link rel="stylesheet" href="styles/editLoja.css" />
 		<link rel="stylesheet" href="styles/loja.css" />
+		<link rel="stylesheet" href="styles/alugarCarro.css" />
 		<%- include("./favicon.ejs") %>
 	</head>
 	<body>
@@ -19,14 +20,6 @@
 					<h1>LocaCar</h1>
 				</figure>
 			</a>
-			<!-- <div class="input">
-				<form action="/lojabuscar" method="post">
-					<input type="text" name="busca" placeholder="Buscar" />
-					<button type="submit">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</button>
-				</form>
-			</div> -->
 			<nav>
 				<a href="/admloja">Loja</a>
 				<a>Meus Aluguéis</a>
@@ -84,8 +77,75 @@
 							value="<%= veiculos[i].diaria %>"
 						/>
 					</div>
-					<button type="submit">Enviar Dados</button>
 					<%}%> <%}%>
+					<div class="input">
+						<label for="dataini">Início do Aluguel</label>
+						<input
+							type="date"
+							name="dataini"
+							id="dataini"
+							class="data"
+							required
+						/>
+					</div>
+					<div class="input">
+						<label for="datafim">Fim do Aluguel</label>
+						<input
+							type="date"
+							name="datafim"
+							id="datafim"
+							class="data"
+							required
+						/>
+					</div>
+					<div class="input valor">
+						<label for="valor">Valor</label>
+						<input type="text" name="valor" id="valor" disabled />
+					</div>
+					<div class="input pagamentos">
+						<label for="pagamento">Forma de Pagamento</label>
+						<div class="forma-pagamento">
+							<input
+								type="radio"
+								name="pagamento"
+								id="pagamento-pix"
+								value="pix"
+							/>
+							<label
+								for="pagamento-pix"
+								class="forma"
+								onclick="pagamento()"
+								><i class="fa-brands fa-pix"></i> PIX
+							</label>
+							<input
+								type="radio"
+								name="pagamento"
+								id="pagamento-boleto"
+								value="boleto"
+							/>
+							<label
+								for="pagamento-boleto"
+								class="forma"
+								onclick="pagamento()"
+								><i class="fa-solid fa-barcode"></i>
+								Boleto
+							</label>
+							<input
+								type="radio"
+								name="pagamento"
+								id="pagamento-cartao"
+								value="cartao"
+							/>
+							<label
+								for="pagamento-cartao"
+								class="forma"
+								onclick="pagamento()"
+								><i class="fa-solid fa-credit-card"></i>
+								Cartão
+							</label>
+						</div>
+					</div>
+					<button type="submit">Confirmar Reserva</button>
 				</fieldset>
 			</form>
 		</section>
@@ -93,5 +153,6 @@
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
 		></script>
+		<script src="scripts/lojaAlugar.js"></script>
 	</body>
 </html>

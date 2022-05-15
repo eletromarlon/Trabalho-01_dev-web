@@ -1,0 +1,20 @@
+section form .input .forma-pagamento {
+	display: flex;
+}
+
+section form .input .forma-pagamento input[type="radio"] {
+	display: none;
+}
+
+section form .input .forma-pagamento .forma {
+	border: 2px solid #e6e6e6;
+	color: #f54a48;
+	width: 50%;
+	text-align: center;
+	padding: 0.625rem 0;
+}
+section form .input .forma-pagamento .selecionado {
+	background-color: #f54a48;
+	color: #fff;
+	border: 2px solid #f54a48;
+}
