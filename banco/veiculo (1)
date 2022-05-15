@@ -8,5 +8,5 @@
 {"_id":"627a8905f74d01d15ec220cb","foto":"/images/cars/GrupoD/NIVF.png","nome":"Nivus","marca":"Volkswagen","cor":"preto","diaria":93.56}
 {"_id":"627a8917f74d01d15ec220cd","foto":"images/cars/GrupoD/PJRS.png","nome":"Pajero","marca":"Mitsubishi","cor":"Azul","diaria":15.56}
 {"_id":"627a8942f74d01d15ec220cf","foto":"/images/cars/GrupoD/TCRO.png","nome":"T-Cross","marca":"Volkswagen","cor":"braco","diaria":70.22}
-{"_id":{"$oid":"627b2ea264317e9c663907b4"},"foto":"/images/cars/GrupoE/ECOT.png","nome":"Ecosport","marca":"Ford","cor":"vermelho","diaria":105.76}
-{"_id":{"$oid":"627b2fda64317e9c663907b6"},"foto":"/images/cars/GrupoE/TIGX.png","nome":"Tiggo","marca":"Chery","cor":"preto","diaria":105.76}
+{"_id":"627b2ea264317e9c663907b4","foto":"/images/cars/GrupoE/ECOT.png","nome":"Ecosport","marca":"Ford","cor":"vermelho","diaria":105.76}
+{"_id":"627b2fda64317e9c663907b6","foto":"/images/cars/GrupoE/TIGX.png","nome":"Tiggo","marca":"Chery","cor":"preto","diaria":105.76}

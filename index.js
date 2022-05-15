@@ -7,6 +7,9 @@ import { fileURLToPath } from "url";
 import { sendMail } from "./src/sendEmail.js";
 import basicAuth from "express-basic-auth";
 import multerIMPORT from "multer";
+import mongo from "mongodb"
+
+const  ObjectId = mongo.ObjectId;
 
 const server = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -146,6 +149,7 @@ server.post("/singup-cadastrar", async (req, res) => {
 			let users = await usersRepository.setUser(
 				// Dados em formato JSON para cadastro no banco
 				{
+					_id: ObjectId().toHexString(),
 					name: userData.name,
 					date: userData.nascimento,
 					telefone: userData.telefone,
@@ -239,6 +243,19 @@ server.post("/editLoja", upload.single("filepond"), async (req, res) => {
 	}
 });
 
+
+server.get("/veiculoDeletado", async (req, res) => {
+	
+	let veiculo = await veiculosRepository.deleteVeiculo(req.query.excluir);
+	
+	if (veiculo) {
+		res.redirect("/admLoja");
+	} else {
+		res.render("/addloja", { cad: false });
+	}
+});
+
+
 server.get("/addLoja", (req, res) => {
 	res.render("addLoja", { cad: false });
 });
@@ -249,6 +266,7 @@ server.post("/addLoja", upload.single("filepond"), async (req, res, next) => {
 	let src = "/images/" + req.file.filename;
 
 	let veiculos = await veiculosRepository.setVeiculo({
+		_id: ObjectId().toHexString(),
 		nome: req.body.nome,
 		marca: req.body.marca,
 		cor: req.body.cor,
@@ -261,12 +279,6 @@ server.post("/addLoja", upload.single("filepond"), async (req, res, next) => {
 	} else {
 		res.render("/addloja", { cad: false });
 	}
-});
-
-server.get("/veiculoDeletado", async (req, res) => {
-	let id = req.query.excluir;
-	let veiculos = await veiculosRepository.deleteVeiculo(id);
-	res.redirect("/admloja");
 });
 
 server.listen(3000, () => {
