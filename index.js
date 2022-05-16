@@ -176,15 +176,21 @@ server.post("/lojabuscar", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
 	let busca = req.body.busca;
 	let resultado = [];
+	
 	veiculos.forEach((veiculo) => {
-		if (
-			veiculo.nome.indexOf(busca) !== -1 ||
-			veiculo.marca.indexOf(busca) !== -1
-		) {
+		let nome = veiculo.nome;
+		let marca = veiculo.marca;
+
+		nome = nome.toLowerCase(); 		//coloca nome para minusculas
+		marca = marca.toLowerCase(); 	//coloca marca para minusculas
+		
+		if ( nome.indexOf(busca.toLowerCase()) !== -1 || marca.indexOf(busca.toLowerCase()) !== -1 ){
 			resultado.push(veiculo);
 		}
 	});
+
 	res.render("loja", { veiculos: resultado });
+	
 });
 
 server.get("/loja-alugar", async (req, res) => {
