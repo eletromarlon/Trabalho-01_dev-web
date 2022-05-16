@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="styles/globalStyles.css" />
 		<link rel="stylesheet" href="styles/index.css" />
 		<link rel="stylesheet" href="styles/editLoja.css" />
-		
+
 		<!--
 		<link
 			href="https://unpkg.com/filepond/dist/filepond.css"
@@ -23,16 +23,16 @@
 			rel="stylesheet"
 		/>-->
 
-		
-
 		<%- include("./favicon.ejs") %>
 	</head>
 	<body>
 		<header>
-			<figure>
-				<img src="images/logo.svg" alt="Logo" />
-				<h1>LocaCar</h1>
-			</figure>
+			<a href="/admloja">
+				<figure>
+					<img src="images/logo.svg" alt="Logo" />
+					<h1>LocaCar</h1>
+				</figure>
+			</a>
 			<nav>
 				<a href="/admloja">Loja</a>
 				<a>Aluguéis</a>
@@ -44,20 +44,25 @@
 		</header>
 		<section>
 			<h2>Cadastrar novo Veículo</h2>
-			<form action="/addLoja" method="post" enctype="multipart/form-data" id="forma">
+			<form
+				action="/addLoja"
+				method="post"
+				enctype="multipart/form-data"
+				id="forma"
+			>
 				<fieldset>
 					<legend>Formulário de Cadastrar</legend>
 					<div class="input">
 						<label for="nome">Nome</label>
-						<input type="text" name="nome" id="nome"  required />
+						<input type="text" name="nome" id="nome" required />
 					</div>
 					<div class="input">
 						<label for="marca">Marca</label>
-						<input type="text" name="marca" id="marca"  required />
+						<input type="text" name="marca" id="marca" required />
 					</div>
 					<div class="input">
 						<label for="cor">Cor</label>
-						<input type="text" name="cor" id="cor"  required />
+						<input type="text" name="cor" id="cor" required />
 					</div>
 					<div class="input">
 						<label for="diaria">Diária</label>
@@ -75,7 +80,12 @@
 						/>
 					</div>
 					<div class="input">
-						<img id="imgChooser" src="#" alt="descricao imagem blablal" hidden/>
+						<img
+							id="imgChooser"
+							src="#"
+							alt="descricao imagem blablal"
+							hidden
+						/>
 					</div>
 					<button type="submit">Cadastrar Veículo</button>
 				</fieldset>
@@ -87,29 +97,27 @@
 		></script>
 
 		<script>
+			function readImage() {
+				const img = document.getElementById("imgChooser");
 
-		function readImage() {
-			
-			const img = document.getElementById("imgChooser");
-			
-			if (this.files && this.files[0]) {
-				var file = new FileReader();
-				
-				file.onload = function(e) {
-					img.src = e.target.result;
-				};    
-			
-				file.readAsDataURL(this.files[0]);
-			
-				img.style.display = "block"
-				img.style.width = "490px"
-				img.style.heigth = "227px"
+				if (this.files && this.files[0]) {
+					var file = new FileReader();
+
+					file.onload = function (e) {
+						img.src = e.target.result;
+					};
+
+					file.readAsDataURL(this.files[0]);
+
+					img.style.display = "block";
+					img.style.width = "490px";
+					img.style.heigth = "227px";
+				}
 			}
-		}
-		
-		const inputFile = document.getElementById("upload");
-		
-		inputFile.addEventListener("change", readImage, false);
+
+			const inputFile = document.getElementById("upload");
+
+			inputFile.addEventListener("change", readImage, false);
 		</script>
 
 		<!--

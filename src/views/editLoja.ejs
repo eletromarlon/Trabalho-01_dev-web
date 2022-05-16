@@ -12,10 +12,12 @@
 	</head>
 	<body>
 		<header>
-			<figure>
-				<img src="images/logo.svg" alt="Logo" />
-				<h1>LocaCar</h1>
-			</figure>
+			<a href="/admloja">
+				<figure>
+					<img src="images/logo.svg" alt="Logo" />
+					<h1>LocaCar</h1>
+				</figure>
+			</a>
 			<nav>
 				<a href="/admloja">Loja</a>
 				<a>Aluguéis</a>
@@ -27,7 +29,11 @@
 		</header>
 		<section>
 			<h2>Editar Dados do Veículo</h2>
-			<form action="/editLoja" method="post" enctype="multipart/form-data">
+			<form
+				action="/editLoja"
+				method="post"
+				enctype="multipart/form-data"
+			>
 				<fieldset>
 					<legend>Formulário de Edição</legend>
 					<% for(let i = 0; i <veiculos.length; i++) {
@@ -78,7 +84,9 @@
 						/>
 					</div>
 					<div class="input">
-						<label for="upload">Upload - Escolha outra imagem  !</label>
+						<label for="upload"
+							>Upload - Escolha outra imagem !</label
+						>
 						<input
 							type="file"
 							class="filepond"
@@ -88,10 +96,13 @@
 						/>
 					</div>
 					<div class="input">
-						<img id="imgChooser" src="<%= veiculos[i].foto %>" alt="descricao imagem blablal"/>
+						<img
+							id="imgChooser"
+							src="<%= veiculos[i].foto %>"
+							alt="descricao imagem blablal"
+						/>
 					</div>
-					
-					
+
 					<button type="submit">Enviar Dados</button>
 					<%}%> <%}%>
 				</fieldset>
@@ -101,30 +112,28 @@
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
 		></script>
-	    <script>
+		<script>
+			function readImage() {
+				const img = document.getElementById("imgChooser");
 
-		function readImage() {
-			
-			const img = document.getElementById("imgChooser");
-			
-			if (this.files && this.files[0]) {
-				var file = new FileReader();
-				
-				file.onload = function(e) {
-					img.src = e.target.result;
-				};    
-			
-				file.readAsDataURL(this.files[0]);
-			
-				img.style.display = "block"
-				img.style.width = "490px"
-				img.style.heigth = "227px"
+				if (this.files && this.files[0]) {
+					var file = new FileReader();
+
+					file.onload = function (e) {
+						img.src = e.target.result;
+					};
+
+					file.readAsDataURL(this.files[0]);
+
+					img.style.display = "block";
+					img.style.width = "490px";
+					img.style.heigth = "227px";
+				}
 			}
-		}
-		
-		const inputFile = document.getElementById("upload");
-		
-		inputFile.addEventListener("change", readImage, false);
+
+			const inputFile = document.getElementById("upload");
+
+			inputFile.addEventListener("change", readImage, false);
 		</script>
 	</body>
 </html>

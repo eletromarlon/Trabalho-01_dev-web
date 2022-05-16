@@ -23,3 +23,7 @@ section form #valores {
 	display: flex;
 	flex-direction: column;
 }
+
+section form button {
+	cursor: pointer;
+}

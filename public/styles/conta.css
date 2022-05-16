@@ -1,0 +1,47 @@
+section form .input .password2 {
+	display: flex;
+	flex-direction: row;
+}
+section form .input .password2 input {
+	width: 70%;
+	border-right: none;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	margin: 0;
+}
+section form .input .password2 a {
+	font: normal normal normal 1.25rem/1.4rem "Roboto", sans-serif;
+	color: #3c3c3c;
+	background-color: #f9f9f9;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-left: none;
+	width: 30%;
+	height: 100%;
+	padding: 0.625rem 1%;
+	height: 100%;
+}
+
+section form .sexos {
+	display: flex;
+}
+
+section form .sexos input[type="radio"] {
+	display: none;
+}
+
+section form .sexos .sexo {
+	border: 2px solid #e6e6e6;
+	color: #f54a48;
+	width: 50%;
+	text-align: center;
+	padding: 0.625rem 0;
+	cursor: pointer;
+}
+section form .sexos .selecionado {
+	background-color: #f54a48;
+	color: #fff;
+	border: 2px solid #f54a48;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LocaCar - Locadora de Veí­culos</title>
+		<link rel="stylesheet" href="styles/globalStyles.css" />
+		<link rel="stylesheet" href="styles/index.css" />
+		<link rel="stylesheet" href="styles/editLoja.css" />
+		<link rel="stylesheet" href="styles/alterarSenha.css" />
+		<%- include("./favicon.ejs") %>
+	</head>
+	<body>
+		<header>
+			<a href="/loja">
+				<figure>
+					<img src="images/logo.svg" alt="Logo" />
+					<h1>LocaCar</h1>
+				</figure>
+			</a>
+			<nav>
+				<a href="/loja">Loja</a>
+				<a href="/meus-alugueis">Meus Aluguéis</a>
+				<a href="/user-conta">Minha Conta</a>
+				<a href="/" class="cadastrar"
+					>Sair <i class="fa-solid fa-arrow-right-from-bracket"></i
+				></a>
+			</nav>
+		</header>
+		<section>
+			<h2>Alteração de Senha</h2>
+			<form action="" method="post">
+				<fieldset>
+					<legend>Formulário de alteração de Senha</legend>
+					<div class="input">
+						<label for="password">Senha Atual</label>
+						<div class="password">
+							<input
+								type="password"
+								id="password"
+								name="password"
+								placeholder="senha"
+								minlength="6"
+								required
+							/>
+							<i
+								class="fa-solid fa-eye mostrar"
+								onclick="mostrarSenha()"
+							></i>
+						</div>
+					</div>
+					<div class="input">
+						<label for="password2">Nova Senha</label>
+						<div class="password">
+							<input
+								type="password"
+								id="password2"
+								name="password"
+								placeholder="senha"
+								minlength="6"
+								required
+							/>
+							<i
+								class="fa-solid fa-eye mostrar2"
+								onclick="mostrarSenha2()"
+							></i>
+						</div>
+					</div>
+					<button type="submit">Confirmar Alteração</button>
+				</fieldset>
+			</form>
+		</section>
+		<script src="scripts/singin.js"></script>
+		<script
+			src="https://kit.fontawesome.com/09c2a18d79.js"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>

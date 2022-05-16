@@ -176,27 +176,42 @@ server.post("/lojabuscar", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
 	let busca = req.body.busca;
 	let resultado = [];
-	
+
 	veiculos.forEach((veiculo) => {
 		let nome = veiculo.nome;
 		let marca = veiculo.marca;
 
-		nome = nome.toLowerCase(); 		//coloca nome para minusculas
-		marca = marca.toLowerCase(); 	//coloca marca para minusculas
-		
-		if ( nome.indexOf(busca.toLowerCase()) !== -1 || marca.indexOf(busca.toLowerCase()) !== -1 ){
+		nome = nome.toLowerCase(); //coloca nome para minusculas
+		marca = marca.toLowerCase(); //coloca marca para minusculas
+
+		if (
+			nome.indexOf(busca.toLowerCase()) !== -1 ||
+			marca.indexOf(busca.toLowerCase()) !== -1
+		) {
 			resultado.push(veiculo);
 		}
 	});
 
 	res.render("loja", { veiculos: resultado });
-	
 });
 
 server.get("/loja-alugar", async (req, res) => {
 	let veiculos = await veiculosRepository.getVeiculos();
 	let car = req.query.car;
 	res.render("lojaAlugar", { veiculos, car });
+});
+
+server.get("/user-conta", (req, res) => {
+	res.render("conta", {});
+});
+server.get("/editar-perfil", (req, res) => {
+	res.render("editPerfil", {});
+});
+server.get("/alterar-senha", (req, res) => {
+	res.render("alterarSenhaConta", {});
+});
+server.get("/meus-alugueis", (req, res) => {
+	res.render("meusAlugueis", {});
 });
 
 // Parte do Administrator

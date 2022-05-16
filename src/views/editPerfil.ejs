@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LocaCar - Locadora de Veículos</title>
+		<link rel="stylesheet" href="styles/globalStyles.css" />
+		<link rel="stylesheet" href="styles/index.css" />
+		<link rel="stylesheet" href="styles/editLoja.css" />
+		<link rel="stylesheet" href="styles/admLoja.css" />
+		<link rel="stylesheet" href="styles/conta.css" />
+		<%- include("./favicon.ejs") %>
+	</head>
+	<body>
+		<header>
+			<a href="/loja">
+				<figure>
+					<img src="images/logo.svg" alt="Logo" />
+					<h1>LocaCar</h1>
+				</figure>
+			</a>
+			<nav>
+				<a href="/loja">Loja</a>
+				<a href="/meus-alugueis">Meus Aluguéis</a>
+				<a href="/user-conta">Minha Conta</a>
+				<a href="/" class="cadastrar"
+					>Sair <i class="fa-solid fa-arrow-right-from-bracket"></i
+				></a>
+			</nav>
+		</header>
+		<section>
+			<div class="header">
+				<h2>Editar Perfil</h2>
+			</div>
+			<form action="">
+				<fieldset>
+					<legend>Formulário de edição da Conta</legend>
+					<div class="input">
+						<label for="nome">Nome</label>
+						<input type="text" id="nome" name="nome" required />
+					</div>
+					<div class="input">
+						<label for="email">E-mail</label>
+						<input type="email" id="email" name="email" required />
+					</div>
+					<div class="input">
+						<label for="nascimento">Nascimento</label>
+						<input
+							type="date"
+							id="nascimento"
+							name="nascimento"
+							required
+						/>
+					</div>
+					<div class="input">
+						<label for="telefone">Telefone</label>
+						<input
+							type="tel"
+							id="telefone"
+							name="telefone"
+							maxlength="15"
+							pattern="\(\d{2}\)\s*\d{5}-\d{4}"
+							required
+						/>
+					</div>
+					<div class="input">
+						<label for="genero">Gênero</label>
+						<div class="sexos">
+							<input
+								type="radio"
+								name="genero"
+								id="masculino"
+								value="masculino"
+							/>
+							<label for="masculino" class="sexo" onclick="sexo()"
+								>Masculino</label
+							>
+							<input
+								type="radio"
+								name="genero"
+								id="feminino"
+								value="feminino"
+							/>
+							<label for="feminino" class="sexo" onclick="sexo()"
+								>Feminino</label
+							>
+						</div>
+					</div>
+					<button type="submit">Salvar Alterações</button>
+				</fieldset>
+			</form>
+		</section>
+		<script
+			src="https://kit.fontawesome.com/09c2a18d79.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="scripts/editPerfil.js"></script>
+	</body>
+</html>

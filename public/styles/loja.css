@@ -43,4 +43,5 @@ section footer button {
 	font: normal normal 400 1.125rem/1.5rem "Poppins", sans-serif;
 	padding: 5px 0;
 	border-radius: 3px;
+	cursor: pointer;
 }
