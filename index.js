@@ -90,8 +90,6 @@ server.post("/singin", async (req, res) => {
 
 	loginatual = req.body.email;
 
-	console.log(loginatual);
-
 	let user = await usersRepository.getUser(
 		req.body.email,
 		btoa(req.body.password)
