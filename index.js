@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 const db = await database.connect(); // conecta ao banco de dados
 const multer = multerIMPORT;
 
-var loginatual = ""
+var loginatual = "";
 
 // Enable CORS
 server.use(function (req, res, next) {
@@ -206,14 +206,13 @@ server.get("/loja-alugar", async (req, res) => {
 });
 
 server.get("/user-conta", async (req, res) => {
-
 	var getUser = await usersRepository.getUsers();
 	let dadosUser = [];
 
 	getUser.forEach((user) => {
 		let email = user.email;
 
-		if (email == loginatual){
+		if (email == loginatual) {
 			dadosUser.push(user.name);
 			dadosUser.push(user.email);
 			dadosUser.push(user.password);
@@ -223,7 +222,7 @@ server.get("/user-conta", async (req, res) => {
 		}
 	});
 
-	res.render("conta", {dados: dadosUser});
+	res.render("conta", { dados: dadosUser });
 });
 server.get("/editar-perfil", (req, res) => {
 	res.render("editPerfil", {});

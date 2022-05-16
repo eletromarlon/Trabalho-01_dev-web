@@ -1,7 +1,7 @@
+let genero = document.querySelectorAll(".sexo");
+let feminino = document.querySelector("#feminino");
+let masculino = document.querySelector("#masculino");
 const sexo = () => {
-	let genero = document.querySelectorAll(".sexo");
-	let feminino = document.querySelector("#feminino");
-	let masculino = document.querySelector("#masculino");
 	if (feminino.checked) {
 		genero[1].classList.add("selecionado");
 		genero[0].classList.remove("selecionado");

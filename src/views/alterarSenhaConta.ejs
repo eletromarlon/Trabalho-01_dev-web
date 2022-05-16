@@ -30,7 +30,7 @@
 		</header>
 		<section>
 			<h2>Alteração de Senha</h2>
-			<form action="" method="post">
+			<form action="/alterar-senha" method="post">
 				<fieldset>
 					<legend>Formulário de alteração de Senha</legend>
 					<div class="input">
@@ -67,11 +67,30 @@
 							></i>
 						</div>
 					</div>
-					<button type="submit">Confirmar Alteração</button>
+					<div class="input">
+						<label for="password2">Confirmar Nova Senha</label>
+						<div class="password">
+							<input
+								type="password"
+								id="password3"
+								name="password"
+								placeholder="senha"
+								minlength="6"
+								required
+							/>
+							<i
+								class="fa-solid fa-eye mostrar3"
+								onclick="mostrarSenha3()"
+							></i>
+						</div>
+					</div>
+					<button type="submit" onclick="confirmarDados()">
+						Confirmar Alteração
+					</button>
 				</fieldset>
 			</form>
 		</section>
-		<script src="scripts/singin.js"></script>
+		<script src="scripts/alterarSenha.js"></script>
 		<script
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
