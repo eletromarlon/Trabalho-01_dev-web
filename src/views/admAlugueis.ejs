@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="styles/globalStyles.css" />
 		<link rel="stylesheet" href="styles/index.css" />
 		<link rel="stylesheet" href="styles/admLoja.css" />
+		<link rel="stylesheet" href="styles/admAlugueis.css" />
 		<%- include("./favicon.ejs") %>
 	</head>
 	<body>
@@ -33,38 +34,49 @@
 			</nav>
 		</header>
 		<section>
-			<div class="header">
-				<h2>Seus Veículos</h2>
-				<a href="/addLoja">Adicionar Veículo</a>
-			</div>
-			<div class="cars">
-				<% veiculos.forEach(produto =>{%>
-				<div class="car">
-					<figure>
-						<img src="<%= produto.foto %>" alt="Foto do Carro" />
-					</figure>
-					<div>
-						<h2><%= produto.nome %></h2>
-					</div>
-					<div class="description">
-						<ul>
-							<li>Marca: <span><%= produto.marca %> </span></li>
-							<li>Cor: <span><%= produto.cor %></span> </li>
-							<li>Diária: <span>R$<%= produto.diaria %></span> </lii>
-						</ul>
-					</div>
-					<footer>
-						<a href="/editLoja?id=<%= produto._id %> " class="edit">Editar</a>
-						<a href="/veiculoDeletado?excluir=<%= produto._id %>"class="delete" id="<%= produto._id %> ">Excluir</a>
-					</footer>
-				</div>
-				<%}) %>
-			</div>
+			<h2>Solicitação de aluguel</h2>
+			<main>
+				<h3>Listagem geral de solicitações de aluguel</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Veículo</th>
+							<th>Data de início</th>
+							<th>Data de término</th>
+							<th>Valor do Aluguel</th>
+							<th>Status</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Luiz Zairo Bastos Viana</td>
+							<td>Fusca</td>
+							<td>20/10/2019</td>
+							<td>20/10/2019</td>
+							<td>R$ 100,00</td>
+							<td class="status-1">Aguardando</td>
+							<td>
+								<a href="" class="aceita">
+									<i class="fa-solid fa-check"></i>
+									Aceitar
+								</a>
+								<a href="" class="rejeita">
+									<i class="fa-solid fa-times"></i>
+									Rejeitar
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</main>
 		</section>
 		<script
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
 		></script>
-		<script src="scripts/admLoja.js"></script>
 	</body>
 </html>

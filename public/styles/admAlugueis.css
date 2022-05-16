@@ -1,0 +1,83 @@
+section {
+	width: 100%;
+}
+section main {
+	background: #ffffff;
+	border: 1px solid #e6e6e6;
+	/* Card shadow */
+
+	box-shadow: 0px 0px 6px rgba(162, 162, 162, 0.25);
+	border-radius: 3px;
+	padding: 30px 25px;
+	margin-top: 30px;
+}
+
+section main h3 {
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: -0.02em;
+
+	/* Dark Gray */
+
+	color: #3c3c3c;
+	margin-bottom: 25px;
+}
+section main table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+section main table thead {
+	background: #f9f9f9;
+	border-radius: 3px;
+	height: 71px;
+}
+section main table thead tr th {
+	padding: 0px 0px 0px 10px;
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 20px;
+	/* identical to box height */
+	letter-spacing: -0.02em;
+	text-transform: uppercase;
+
+	/* Gray */
+
+	color: #7c7c7c;
+}
+
+section main table tbody tr {
+	height: 71px;
+}
+section main table tbody tr td {
+	text-align: center;
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+
+	/* Dark Gray */
+
+	color: #3c3c3c;
+}
+section main table tbody tr .aceita,
+section main table tbody tr .status-2 {
+	color: #34c38f;
+	text-decoration: none;
+}
+section main table tbody tr .rejeita,
+section main table tbody tr .status-0 {
+	color: #f54a48;
+	text-decoration: none;
+}
+
+section main table tbody tr .status-1 {
+	color: #fac12f;
+}

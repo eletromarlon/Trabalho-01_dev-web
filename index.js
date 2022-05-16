@@ -319,6 +319,10 @@ server.post("/addLoja", upload.single("filepond"), async (req, res, next) => {
 	}
 });
 
+server.get("/admAlugueis", (req, res) => {
+	res.render("admAlugueis", {});
+});
+
 server.listen(3000, () => {
 	console.log(`Server is running on port 3000`);
 });
