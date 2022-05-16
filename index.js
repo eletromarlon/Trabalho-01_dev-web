@@ -10,12 +10,13 @@ import multerIMPORT from "multer";
 import mongo from "mongodb";
 
 const ObjectId = mongo.ObjectId;
-
 const server = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const db = await database.connect(); // conecta ao banco de dados
 const multer = multerIMPORT;
+
+var loginatual = ""
 
 // Enable CORS
 server.use(function (req, res, next) {
@@ -86,6 +87,11 @@ server.get("/singin", (req, res) => {
 
 server.post("/singin", async (req, res) => {
 	//verificar se o usuario é válido
+
+	loginatual = req.body.email;
+
+	console.log(loginatual);
+
 	let user = await usersRepository.getUser(
 		req.body.email,
 		btoa(req.body.password)
@@ -201,8 +207,25 @@ server.get("/loja-alugar", async (req, res) => {
 	res.render("lojaAlugar", { veiculos, car });
 });
 
-server.get("/user-conta", (req, res) => {
-	res.render("conta", {});
+server.get("/user-conta", async (req, res) => {
+
+	var getUser = await usersRepository.getUsers();
+	let dadosUser = [];
+
+	getUser.forEach((user) => {
+		let email = user.email;
+
+		if (email == loginatual){
+			dadosUser.push(user.name);
+			dadosUser.push(user.email);
+			dadosUser.push(user.password);
+			dadosUser.push(user.date);
+			dadosUser.push(user.telefone);
+			dadosUser.push(user.genero);
+		}
+	});
+
+	res.render("conta", {dados: dadosUser});
 });
 server.get("/editar-perfil", (req, res) => {
 	res.render("editPerfil", {});
