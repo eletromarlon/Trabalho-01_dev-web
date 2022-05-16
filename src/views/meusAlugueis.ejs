@@ -7,6 +7,7 @@
 		<title>LocaCar - Locadora de Veículos</title>
 		<link rel="stylesheet" href="styles/globalStyles.css" />
 		<link rel="stylesheet" href="styles/index.css" />
+		<link rel="stylesheet" href="styles/meusAlugueis.css" />
 		<%- include("./favicon.ejs") %>
 	</head>
 	<body>
@@ -28,10 +29,103 @@
 		</header>
 		<section>
 			<h2>Meus Aluguéis</h2>
+			<main>
+				<div class="aluguel">
+					<figure>
+						<img src="images/NUNS.png" alt="" />
+					</figure>
+					<div class="principal">
+						<h1>FIAT - UNO</h1>
+						<div class="dados">
+							<ul>
+								<li>
+									R$ 78.89 -
+									<span class="disponivel-<%= 0 %>"
+										>Rejeitado</span
+									>
+								</li>
+								<li>De 16/05/2022 até 18/05/2022</li>
+							</ul>
+							<details>
+								<summary>
+									<a class="exibir-mais">
+										<p class="texto-exibir">Exibir mais</p>
+									</a>
+								</summary>
+								<ul>
+									<li>Cor: Prata</li>
+									<li>Forma de Pagamento: PIX</li>
+								</ul>
+							</details>
+						</div>
+					</div>
+				</div>
+				<div class="aluguel">
+					<figure>
+						<img src="images/NUNS.png" alt="" />
+					</figure>
+					<div class="principal">
+						<h1>FIAT - UNO</h1>
+						<div class="dados">
+							<ul>
+								<li>
+									R$ 78.89 -
+									<span class="disponivel-<%= 1 %>"
+										>Aguardando Confirmação</span
+									>
+								</li>
+								<li>De 16/05/2022 até 18/05/2022</li>
+							</ul>
+							<details>
+								<summary>
+									<a class="exibir-mais">
+										<p class="texto-exibir">Exibir mais</p>
+									</a>
+								</summary>
+								<ul>
+									<li>Cor: Prata</li>
+									<li>Forma de Pagamento: PIX</li>
+								</ul>
+							</details>
+						</div>
+					</div>
+				</div>
+				<div class="aluguel">
+					<figure>
+						<img src="images/NUNS.png" alt="" />
+					</figure>
+					<div class="principal">
+						<h1>FIAT - UNO</h1>
+						<div class="dados">
+							<ul>
+								<li>
+									R$ 78.89 -
+									<span class="disponivel-<%= 2 %>"
+										>Aceito</span
+									>
+								</li>
+								<li>De 16/05/2022 até 18/05/2022</li>
+							</ul>
+							<details>
+								<summary>
+									<a class="exibir-mais">
+										<p class="texto-exibir">Exibir mais</p>
+									</a>
+								</summary>
+								<ul>
+									<li>Cor: Prata</li>
+									<li>Forma de Pagamento: PIX</li>
+								</ul>
+							</details>
+						</div>
+					</div>
+				</div>
+			</main>
 		</section>
 		<script
 			src="https://kit.fontawesome.com/09c2a18d79.js"
 			crossorigin="anonymous"
 		></script>
+		<!-- <script src="scripts/aluguel.js"></script> -->
 	</body>
 </html>

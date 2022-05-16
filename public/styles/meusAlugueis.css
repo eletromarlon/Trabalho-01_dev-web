@@ -1,0 +1,112 @@
+section main {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: 20px 10%;
+	gap: 20px;
+}
+
+section main .aluguel {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	background: #ffffff;
+	border: 1px solid #e6e6e6;
+	box-shadow: 0px 0px 6px rgba(162, 162, 162, 0.25);
+	border-radius: 3px;
+	gap: 30px;
+	height: 250px;
+}
+
+/* section main .aluguel .mais-detalhes {
+	height: 400px;
+} */
+
+section main .aluguel figure {
+	width: 40%;
+}
+section main .aluguel .principal {
+	width: calc(60% - 30px);
+	padding-top: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+section main .aluguel .principal h1 {
+	text-align: center;
+	font: normal normal 600 1.625rem/2.4375rem "Poppins", sans-serif;
+	color: #3c3c3c;
+	letter-spacing: -0.02em;
+}
+section main .aluguel .principal .dados {
+	font: normal normal 500 1.125rem/1.6875rem "Poppins", sans-serif;
+	color: #3c3c3c;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 1rem;
+	height: 150px;
+}
+section main .aluguel .principal .dados ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.625rem;
+}
+section main .aluguel .principal .dados ul li span {
+	font: normal normal 400 1.125rem/1.5rem "Poppins", sans-serif;
+	cursor: pointer;
+	padding: 5px 5px;
+	border-radius: 3px;
+}
+
+section main .aluguel .principal .dados ul li .disponivel-2 {
+	background: rgba(52, 195, 143, 0.2);
+	color: #34c38f;
+}
+section main .aluguel .principal .dados ul li .disponivel-1 {
+	background: rgba(250, 193, 47, 0.2);
+	color: #fac12f;
+}
+section main .aluguel .principal .dados ul li .disponivel-0 {
+	background: rgba(245, 74, 72, 0.2);
+	color: #f54a48;
+}
+
+section main .aluguel .principal .dados details {
+	max-height: 100px;
+}
+section main .aluguel .principal .dados details > summary {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-decoration: none;
+	color: #f54a48;
+	cursor: pointer;
+}
+section main .aluguel .principal .dados details > summary a {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 5px;
+}
+
+section main .aluguel .dados2 {
+	width: 100%;
+	padding: 10px 50px;
+	margin-top: -30px;
+	display: none;
+}
+
+section main .aluguel .dados2 ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.625rem;
+}
+section main .aluguel .dados2 ul li {
+	font: normal normal 500 1.125rem/1.6875rem "Poppins", sans-serif;
+	color: #3c3c3c;
+	cursor: pointer;
+	padding: 5px 5px;
+	border-radius: 3px;
+}
