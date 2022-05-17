@@ -416,6 +416,41 @@ server.get("/admUsuarios", async (req, res) => {
 	res.render("admUsuarios", { usuarios });
 });
 
+server.post("/addADM", async (req, res) => {
+	var userData = req.body;
+	userData.status = 1;
+	userData.statusLogin = 1;
+	var getUser = await usersRepository.getUsers();
+	var userList = JSON.stringify(getUser); //Transformando JSON em objeto
+	// Debbugs para entender o body
+	// console.log(userData.password[0]);
+	// console.log(userData);
+
+	let senha = btoa(userData.password[0]); // para converter de volta é atob
+
+	if (userList.indexOf(userData.email) !== -1) {
+		console.log("E-mail já utilizado!!");
+		res.render("recoveryPassword", { error: true });
+	} else {
+		let users = await usersRepository.setUser(
+			// Dados em formato JSON para cadastro no banco
+			{
+				_id: ObjectId().toHexString(),
+				name: userData.nome,
+				telefone: userData.telefone,
+				email: userData.email,
+				password: senha, // Password em primeira posicao
+				status: userData.status,
+				statusLogin: userData.statusLogin,
+			}
+		);
+		if (users) {
+			res.render("admin", { erroLogin: "" }); // Caso users seja true redireciona para "singin"
+		}
+	}
+
+});
+
 server.get("/statusLoginAdm", async (req, res) => {
 	let usuario = await usersRepository.getUser(
 		req.query.email,

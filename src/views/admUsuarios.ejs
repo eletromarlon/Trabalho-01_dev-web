@@ -59,14 +59,14 @@
 							<td><%= atob(usuario.password) %></td>
 							<td>
 								<a
-									href="/statusLoginAdm?email=<%=usuario.email%>&senha=<%=usuario.password%>&statusLogin=1"
+									href="/statusLoginAdm?email=<%=usuario.email%>&senha=<%=atob(usuario.password)%>&statusLogin=1"
 									class="aceita"
 								>
 									<i class="fa-solid fa-check"></i>
 									Ativar
 								</a>
 								<a
-									href="/statusLoginAdm?email=<%=usuario.email%>&senha=<%=usuario.password%>&statusLogin=0"
+									href="/statusLoginAdm?email=<%=usuario.email%>&senha=<%=atob(usuario.password)%>&statusLogin=0"
 									class="rejeita"
 								>
 									<i class="fa-solid fa-times"></i>
