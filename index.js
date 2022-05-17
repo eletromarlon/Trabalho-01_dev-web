@@ -247,7 +247,7 @@ server.get("/editar-perfil", async (req, res) => {
 });
 
 server.post("/update-perfil", async (req, res) => {
-	
+
 	let users = await usersRepository.updateUser(
 		req.body.nome,
 		req.body.email,
@@ -398,8 +398,6 @@ server.get("/admUsuarios", async (req, res) => {
 });
 
 server.get("/statusLoginAdm", async (req, res) => {
-
-	console.log(req.query)
 
 	let usuario = await usersRepository.getUser(req.query.email, req.query.password)
 

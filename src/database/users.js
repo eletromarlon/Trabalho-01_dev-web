@@ -27,8 +27,11 @@ class UsersRepository {
 	}
 
 	async getUser(email, password){
+
 		let db = await database.connect();
-		let user = await db.collection('users').findOne({email, password})
+		let user = await db.collection("users").findOne({email:email})
+		console.log(email)
+		console.log(password);
 		return user
 	}
 
