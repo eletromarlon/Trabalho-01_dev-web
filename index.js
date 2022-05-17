@@ -137,6 +137,7 @@ server.post("/recoveryPasswd", async (req, res) => {
 server.post("/singup-cadastrar", async (req, res) => {
 	var userData = req.body;
 	userData.status = 0;
+	userData.statusLogin = 1;
 	var getUser = await usersRepository.getUsers();
 	var userList = JSON.stringify(getUser); //Transformando JSON em objeto
 	// Debbugs para entender o body
@@ -161,6 +162,7 @@ server.post("/singup-cadastrar", async (req, res) => {
 					email: userData.email,
 					password: senha, // Password em primeira posicao
 					status: userData.status,
+					statusLogin:userData.statusLogin
 				}
 			);
 			if (users) {
@@ -293,7 +295,7 @@ server.post("/loja-alugar", async (req, res) => {
 			status: 1,
 		}
 	);
-	
+
 	if(aluguel){
 		res.render("meusAlugueis", {});
 	}
@@ -386,6 +388,36 @@ server.post("/addLoja", upload.single("filepond"), async (req, res, next) => {
 
 server.get("/admAlugueis", (req, res) => {
 	res.render("admAlugueis", {});
+});
+
+server.get("/admUsuarios", async (req, res) => {
+
+	let usuarios = await usersRepository.getUsersADM();
+
+	res.render("admUsuarios", {usuarios});
+});
+
+server.get("/statusLoginAdm", async (req, res) => {
+
+	console.log(req.query)
+
+	let usuario = await usersRepository.getUser(req.query.email, req.query.password)
+
+	if(req.query.statusLogin == 1){
+		usuario.statusLogin = 1
+	}else{
+		usuario.statusLogin = 0
+	}
+
+	let updateUsuario = await usersRepository.updateStatusLoginUserADM(usuario)
+
+	let usuarios = await usersRepository.getUsersADM();
+
+	if(updateUsuario){
+		res.render("admUsuarios", {usuarios});
+	}else {
+		console.log("DEU RUIM");
+	}
 });
 
 server.listen(3000, () => {

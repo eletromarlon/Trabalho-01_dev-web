@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LocaCar - Locadora de Veículos</title>
+
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="sweetalert2.all.min.js"></script>
+		<link rel="stylesheet" href="styles/swalAlert.css" />
+
+		<link rel="stylesheet" href="styles/globalStyles.css" />
+		<link rel="stylesheet" href="styles/index.css" />
+		<link rel="stylesheet" href="styles/admLoja.css" />
+		<link rel="stylesheet" href="styles/admAlugueis.css" />
+		<%- include("./favicon.ejs") %>
+	</head>
+	<body>
+		<header>
+			<a href="/admloja">
+				<figure>
+					<img src="images/logo.svg" alt="Logo" />
+					<h1>LocaCar</h1>
+				</figure>
+			</a>
+			<nav>
+				<a href="/admloja">Loja</a>
+				<a href="/admAlugueis">Aluguéis</a>
+				<a>Usuários</a>
+				<a href="/" class="cadastrar"
+					>Sair <i class="fa-solid fa-arrow-right-from-bracket"></i
+				></a>
+			</nav>
+		</header>
+		<section>
+			<h2>Usuários Administradores</h2>
+			<main>
+				<h3>Listagem geral de Usuários Administradores</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Telefone</th>
+							<th>Email</th>
+							<th>Senha</th>
+              <th>Status Login</th>
+              <th>Editar</th>
+						</tr>
+					</thead>
+					<tbody>
+            <% usuarios.forEach(usuario =>{ %>
+    						<tr>
+                  <td><%= usuario._id %></td>
+    							<td><%= usuario.name %></td>
+    							<td><%= usuario.telefone %></td>
+    							<td><%= usuario.email %></td>
+    							<td><%= usuario.password %></td>
+    							<td>
+    								<a href="/statusLoginAdm?email=<%=usuario.email%>&senha=<%=usuario.password%>&statusLogin=1" class="aceita">
+    									<i class="fa-solid fa-check"></i>
+    									Ativar
+    								</a>
+    								<a href="" class="rejeita">
+    									<i class="fa-solid fa-times"></i>
+    									Desativar
+    								</a>
+    							</td>
+                  <td>
+                    <a href="" class="aceita">
+                      <i class="fa-solid fa-check"></i>
+                      Editar
+                    </a>
+                  </td>
+    						</tr>
+           <%}) %>
+					</tbody>
+				</table>
+			</main>
+		</section>
+		<script
+			src="https://kit.fontawesome.com/09c2a18d79.js"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
