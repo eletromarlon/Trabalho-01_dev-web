@@ -88,7 +88,16 @@ server.get("/singin", (req, res) => {
 server.post("/singin", async (req, res) => {
 	//verificar se o usuario é válido
 
-	loginatual = req.body.email;
+	var getUser = await usersRepository.getUsers();
+
+	getUser.forEach((user) => {//Verifica os dados no banco relacionados ao ID -> email
+		let email = user.email;
+		
+		if (email == req.body.email) {
+			loginatual = user._id;
+			//console.log(loginatual);
+		}
+	});
 
 	let user = await usersRepository.getUser(
 		req.body.email,
@@ -96,8 +105,9 @@ server.post("/singin", async (req, res) => {
 	);
 
 	if (user) {
-		let veiculos = await veiculosRepository.getVeiculos();
-		res.render("loja", { veiculos });
+		res.redirect("/loja");
+		// let veiculos = await veiculosRepository.getVeiculos();
+		// res.render("loja", { veiculos });
 	} else {
 		res.render("singin", { erroLogin: true });
 	}
@@ -212,9 +222,9 @@ server.get("/user-conta", async (req, res) => {
 	let dadosUser = [];
 
 	getUser.forEach((user) => {
-		let email = user.email;
+		let id = user._id;
 
-		if (email == loginatual) {
+		if (id == loginatual) {
 			dadosUser.push(user.name);
 			dadosUser.push(user.email);
 			dadosUser.push(user.password);
@@ -232,9 +242,9 @@ server.get("/editar-perfil", async (req, res) => {
 	let dadosUser = [];
 
 	getUser.forEach((user) => {
-		let email = user.email;
+		let id = user._id;
 
-		if (email == loginatual){
+		if (id == loginatual) {
 			dadosUser.push(user.name);
 			dadosUser.push(user.email);
 			dadosUser.push(user.password);
@@ -253,16 +263,17 @@ server.post("/update-perfil", async (req, res) => {
 		req.body.email,
 		req.body.nascimento,
 		req.body.telefone,
-		req.body.genero
+		req.body.genero,
+		loginatual
 	);
 
 	var getUser = await usersRepository.getUsers();
 	let dadosUser = [];
 
 	getUser.forEach((user) => {
-		let email = user.email;
+		let id = user._id;
 
-		if (email == loginatual){
+		if (id == loginatual) {
 			dadosUser.push(user.name);
 			dadosUser.push(user.email);
 			dadosUser.push(user.password);

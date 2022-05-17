@@ -41,7 +41,7 @@ class UsersRepository {
 		return user
 	}
 
-	async updateUser(nome, email, data, telefone, genero ){
+	async updateUser(nome, email, data, telefone, genero, id ){
 		let db = await database.connect();
 
 		let novos = {
@@ -54,7 +54,7 @@ class UsersRepository {
 
 		console.log("dentro de updateUser", novos, "\nvalores", nome, email );
 
-		let user = await db.collection('users').updateOne({"email": email},{$set: novos }, { upsert: true }, async (erro, resultado)=> {
+		let user = await db.collection('users').updateOne({"_id": id},{$set: novos }, { upsert: true }, async (erro, resultado)=> {
 			if (erro) throw erro
 			await console.log(resultado.modifiedCount + ` deu certo`);
 		});
