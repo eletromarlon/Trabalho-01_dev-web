@@ -301,9 +301,20 @@ server.post("/loja-alugar", async (req, res) => {
 	}
 });
 
-// Parte do Administrator
-server.get("/admin", (req, res) => {
-	res.render("admin", {});
+server.post("/admloja", async (req, res) => {
+
+	 let password = btoa(req.body.password)
+	 let email = req.body.email
+
+	 let usuario = await usersRepository.getUser(email, password)
+
+	 if(usuario.statusLogin == 1){
+		 let veiculos = await veiculosRepository.getVeiculos();
+	 	 res.render("admLoja", { veiculos });
+	 }else{
+		 console.log("SEM ACESSO AO LOGIN!")
+	 }
+
 });
 
 server.get("/admloja", async (req, res) => {

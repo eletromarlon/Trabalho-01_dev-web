@@ -30,8 +30,6 @@ class UsersRepository {
 
 		let db = await database.connect();
 		let user = await db.collection("users").findOne({email:email})
-		console.log(email)
-		console.log(password);
 		return user
 	}
 
