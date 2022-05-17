@@ -32,9 +32,13 @@
 		</header>
 		<section>
 			<h2>Editar Administrador</h2>
-			<form action="">
+			<form action="/updateUserADM" method="post">
 				<fieldset>
 					<legend>Formulário de Edição</legend>
+
+					<div class="input">
+						<input type="text" id="id" name="id" placeholder="nome" required value="<%= id %>" hidden/>
+					</div>
 					<div class="input">
 						<label for="nome">Nome</label>
 						<input type="text" id="nome" name="nome" placeholder="nome" required value="<%= nome %>"/>

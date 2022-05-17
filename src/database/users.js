@@ -41,6 +41,14 @@ class UsersRepository {
 		return user
 	}
 
+	async updateUserADM(user){
+		let db = await database.connect();
+		let updateUser = await db.collection("users").updateOne(
+			{_id:user._id, status:1},//CRITÉRIO DE UPDATE
+			{$set:{email:user.email, telefone:user.telefone, name:user.name, password:user.password}});
+		return user
+	}
+
 	async updateUser(nome, email, data, telefone, genero, id ){
 		let db = await database.connect();
 

@@ -477,6 +477,7 @@ server.get("/statusLoginAdm", async (req, res) => {
 server.get("/admAddUsuario", (req, res) => {
 	res.render("admAddUsuario", {});
 });
+
 server.get("/admEditUsuario", async (req, res) => {
 	let id = req.query.user;
 	let usuarios = await usersRepository.getUsersADM();
@@ -494,6 +495,33 @@ server.get("/admEditUsuario", async (req, res) => {
 		}
 	}
 	res.render("admEditUsuario", { nome, email, password, telefone, id });
+});
+
+server.post("/updateUserADM", async (req, res) => {
+
+ 	let userData  = req.body
+
+	let senha = btoa(userData.password);
+
+	let updateUser = await usersRepository.updateUserADM(
+		// Dados em formato JSON para cadastro no banco
+		{
+			_id: userData.id,
+			name: userData.nome,
+			telefone: userData.telefone,
+			email: userData.email,
+			password: senha // Password em primeira posicao
+		}
+	);
+
+	let usuarios = await usersRepository.getUsersADM();
+
+		if (updateUser) {
+			res.render("admUsuarios", { usuarios });
+		} else {
+			console.log("DEU RUIM");
+		}
+
 });
 
 server.listen(3000, () => {
