@@ -38,11 +38,23 @@
 					<legend>Formulário de edição da Conta</legend>
 					<div class="input">
 						<label for="nome">Nome</label>
-						<input type="text" id="nome" name="nome" value="<%= dados[0] %>" required />
+						<input
+							type="text"
+							id="nome"
+							name="nome"
+							value="<%= dados[0] %>"
+							required
+						/>
 					</div>
 					<div class="input">
 						<label for="email">E-mail</label>
-						<input type="email" id="email" name="email" value="<%= dados[1] %>" required />
+						<input
+							type="email"
+							id="email"
+							name="email"
+							value="<%= dados[1] %>"
+							required
+						/>
 					</div>
 					<div class="input">
 						<label for="nascimento">Nascimento</label>
@@ -73,6 +85,7 @@
 								type="radio"
 								name="genero"
 								id="masculino"
+								required
 								value="masculino"
 							/>
 							<label for="masculino" class="sexo" onclick="sexo()"

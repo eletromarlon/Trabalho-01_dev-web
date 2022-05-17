@@ -9,20 +9,6 @@
 		<link rel="stylesheet" href="styles/index.css" />
 		<link rel="stylesheet" href="styles/editLoja.css" />
 
-		<!--
-		<link
-			href="https://unpkg.com/filepond/dist/filepond.css"
-			rel="stylesheet"
-		/>
-		<link
-			href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
-			rel="stylesheet"
-		/>
-		<link
-			href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css"
-			rel="stylesheet"
-		/>-->
-
 		<%- include("./favicon.ejs") %>
 	</head>
 	<body>
@@ -35,8 +21,8 @@
 			</a>
 			<nav>
 				<a href="/admloja">Loja</a>
-				<a>Aluguéis</a>
-				<a>Usuários</a>
+				<a href="/admAlugueis">Aluguéis</a>
+				<a href="/admUsuarios">Usuários</a>
 				<a href="/" class="cadastrar"
 					>Sair <i class="fa-solid fa-arrow-right-from-bracket"></i
 				></a>
@@ -119,13 +105,5 @@
 
 			inputFile.addEventListener("change", readImage, false);
 		</script>
-
-		<!--
-		<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-		<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-		<script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
-		<script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
-		<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-		<script src="scripts/addLoja.js"></script>-->
 	</body>
 </html>
