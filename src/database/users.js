@@ -32,7 +32,14 @@ class UsersRepository {
 		return user
 	}
 
-<<<<<<< Updated upstream
+	async updateStatusLoginUserADM(user){
+		let db = await database.connect();
+		let updateUser = await db.collection("users").updateOne(
+			{_id:user._id, status:1},//CRITÉRIO DE UPDATE
+			{$set:{statusLogin:user.statusLogin}});
+		return user
+	}
+
 	async updateUser(nome, email, data, telefone, genero ){
 		let db = await database.connect();
 
@@ -50,14 +57,7 @@ class UsersRepository {
 			if (erro) throw erro
 			await console.log(resultado.modifiedCount + ` deu certo`);
 		});
-=======
-	async updateStatusLoginUserADM(user){
-		let db = await database.connect();
-		let updateUser = await db.collection("users").updateOne(
-			{_id:user._id, status:1},//CRITÉRIO DE UPDATE
-			{$set:{statusLogin:user.statusLogin}});
->>>>>>> Stashed changes
-		return user
+
 	}
 
 }
