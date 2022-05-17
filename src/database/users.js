@@ -52,7 +52,7 @@ class UsersRepository {
 			email: email
 		};
 
-		console.log("dentro de updateUser", novos, "\nvalores", nome, email );
+		console.log("dentro de updateUser", novos, "\nvalores", nome, email, id );
 
 		let user = await db.collection('users').updateOne({"_id": id},{$set: novos }, { upsert: true }, async (erro, resultado)=> {
 			if (erro) throw erro
@@ -60,7 +60,7 @@ class UsersRepository {
 		});
 	}
 
-	async updateUser(id, novaSenha){
+	async updateUserPassword(id, novaSenha){
 		let db = await database.connect();
 
 		let novos = {

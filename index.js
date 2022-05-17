@@ -177,7 +177,8 @@ server.post("/singup-cadastrar", async (req, res) => {
 				}
 			);
 			if (users) {
-				res.render("singin", { erroLogin: "" }); // Caso users seja true redireciona para "singin"
+				console.log("Redirecionando para singin");
+				res.redirect("/singin"); // Caso users seja true redireciona para "singin"
 			}
 		}
 	}
@@ -267,6 +268,8 @@ server.post("/update-perfil", async (req, res) => {
 		loginatual
 	);
 
+	console.log(loginatual);
+
 	var getUser = await usersRepository.getUsers();
 	let dadosUser = [];
 
@@ -293,7 +296,7 @@ server.post("/alterar-senha", async (req, res) => {
 
 	let novaSenha = btoa(req.body.password[2]);
 
-	let users = await usersRepository.updateUser(loginatual, novaSenha);
+	let users = await usersRepository.updateUserPassword(loginatual, novaSenha);
 
 	var getUser = await usersRepository.getUsers();
 	let dadosUser = [];
