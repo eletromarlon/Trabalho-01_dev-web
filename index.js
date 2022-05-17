@@ -224,9 +224,54 @@ server.get("/user-conta", async (req, res) => {
 
 	res.render("conta", { dados: dadosUser });
 });
-server.get("/editar-perfil", (req, res) => {
-	res.render("editPerfil", {});
+
+server.get("/editar-perfil", async (req, res) => {
+	var getUser = await usersRepository.getUsers();
+	let dadosUser = [];
+
+	getUser.forEach((user) => {
+		let email = user.email;
+
+		if (email == loginatual){
+			dadosUser.push(user.name);
+			dadosUser.push(user.email);
+			dadosUser.push(user.password);
+			dadosUser.push(user.date);
+			dadosUser.push(user.telefone);
+			dadosUser.push(user.genero);
+		}
+	});
+	res.render("editPerfil", {dados: dadosUser});
 });
+
+server.post("/update-perfil", async (req, res) => {
+	
+	let users = await usersRepository.updateUser(
+		req.body.nome,
+		req.body.email,
+		req.body.nascimento,
+		req.body.telefone,
+		req.body.genero
+	);
+
+	var getUser = await usersRepository.getUsers();
+	let dadosUser = [];
+
+	getUser.forEach((user) => {
+		let email = user.email;
+
+		if (email == loginatual){
+			dadosUser.push(user.name);
+			dadosUser.push(user.email);
+			dadosUser.push(user.password);
+			dadosUser.push(user.date);
+			dadosUser.push(user.telefone);
+			dadosUser.push(user.genero);
+		}
+	});
+	res.render("editPerfil", {dados: dadosUser});
+});
+
 server.get("/alterar-senha", (req, res) => {
 	res.render("alterarSenhaConta", {});
 });

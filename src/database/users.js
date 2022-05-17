@@ -22,6 +22,27 @@ class UsersRepository {
 		let user = await db.collection('users').findOne({email, password})
 		return user
 	}
+
+	async updateUser(nome, email, data, telefone, genero ){
+		let db = await database.connect();
+
+		let novos = {
+			name: nome,
+			date: data,
+			telefone: telefone,
+			genero: genero,
+			email: email
+		};
+
+		console.log("dentro de updateUser", novos, "\nvalores", nome, email );
+
+		let user = await db.collection('users').updateOne({"email": email},{$set: novos }, { upsert: true }, async (erro, resultado)=> {
+			if (erro) throw erro
+			await console.log(resultado.modifiedCount + ` deu certo`);
+		});
+		return user
+	}
+
 }
 
 export const usersRepository = new UsersRepository();
