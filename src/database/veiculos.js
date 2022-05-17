@@ -43,6 +43,22 @@ class VeiculosRepository {
 		let insertUser = await db.collection("veiculo").insertOne(dados); // Insere um dado em uma colecao
 		return true; //retorna verdade caso tudo tenha funcionado certo
 	}
+
+	async setAluguel(dados) { 
+		let db = await database.connect(); // Conecta-se com o banco
+		let insertUser = await db.collection("locacao").insertOne(dados) // Insere um dado em uma colecao
+		return true; //retorna verdade caso tudo tenha funcionado certo
+	}
+
+	//pega os alugueis
+	async getAlugueis() {
+		let db = await database.connect();
+		let locacaoCollection = await db
+			.collection("locacao")
+			.find()
+			.toArray();
+		return locacaoCollection;
+	}
 }
 
 export const veiculosRepository = new VeiculosRepository();

@@ -234,6 +234,26 @@ server.get("/meus-alugueis", (req, res) => {
 	res.render("meusAlugueis", {});
 });
 
+server.post("/loja-alugar", async (req, res) => {
+	var dados = req.body;
+	let aluguel = await veiculosRepository.setAluguel(
+		// Dados em formato JSON para cadastro no banco
+		{
+			_id: ObjectId().toHexString(),
+			veiculoId: req.query.car,
+			userEmail: loginatual,
+			inicioAluguel: dados.dataini,
+			fimAluguel: dados.datafim,
+			pagamento: dados.pagamento,
+			status: 1,
+		}
+	);
+	
+	if(aluguel){
+		res.render("meusAlugueis", {});
+	}
+});
+
 // Parte do Administrator
 server.get("/admin", (req, res) => {
 	res.render("admin", {});
