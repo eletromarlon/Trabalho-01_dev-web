@@ -90,9 +90,10 @@ server.post("/singin", async (req, res) => {
 
 	var getUser = await usersRepository.getUsers();
 
-	getUser.forEach((user) => {//Verifica os dados no banco relacionados ao ID -> email
+	getUser.forEach((user) => {
+		//Verifica os dados no banco relacionados ao ID -> email
 		let email = user.email;
-		
+
 		if (email == req.body.email) {
 			loginatual = user._id;
 			//console.log(loginatual);
@@ -172,7 +173,7 @@ server.post("/singup-cadastrar", async (req, res) => {
 					email: userData.email,
 					password: senha, // Password em primeira posicao
 					status: userData.status,
-					statusLogin:userData.statusLogin
+					statusLogin: userData.statusLogin,
 				}
 			);
 			if (users) {
@@ -253,11 +254,10 @@ server.get("/editar-perfil", async (req, res) => {
 			dadosUser.push(user.genero);
 		}
 	});
-	res.render("editPerfil", {dados: dadosUser});
+	res.render("editPerfil", { dados: dadosUser });
 });
 
 server.post("/update-perfil", async (req, res) => {
-
 	let users = await usersRepository.updateUser(
 		req.body.nome,
 		req.body.email,
@@ -282,7 +282,7 @@ server.post("/update-perfil", async (req, res) => {
 			dadosUser.push(user.genero);
 		}
 	});
-	res.render("editPerfil", {dados: dadosUser});
+	res.render("editPerfil", { dados: dadosUser });
 });
 
 server.get("/alterar-senha", (req, res) => {
@@ -307,25 +307,23 @@ server.post("/loja-alugar", async (req, res) => {
 		}
 	);
 
-	if(aluguel){
+	if (aluguel) {
 		res.render("meusAlugueis", {});
 	}
 });
 
 server.post("/admloja", async (req, res) => {
+	let password = btoa(req.body.password);
+	let email = req.body.email;
 
-	 let password = btoa(req.body.password)
-	 let email = req.body.email
+	let usuario = await usersRepository.getUser(email, password);
 
-	 let usuario = await usersRepository.getUser(email, password)
-
-	 if(usuario.statusLogin == 1){
-		 let veiculos = await veiculosRepository.getVeiculos();
-	 	 res.render("admLoja", { veiculos });
-	 }else{
-		 console.log("SEM ACESSO AO LOGIN!")
-	 }
-
+	if (usuario.statusLogin == 1) {
+		let veiculos = await veiculosRepository.getVeiculos();
+		res.render("admLoja", { veiculos });
+	} else {
+		console.log("SEM ACESSO AO LOGIN!");
+	}
 });
 
 server.get("/admloja", async (req, res) => {
@@ -413,31 +411,54 @@ server.get("/admAlugueis", (req, res) => {
 });
 
 server.get("/admUsuarios", async (req, res) => {
-
 	let usuarios = await usersRepository.getUsersADM();
 
-	res.render("admUsuarios", {usuarios});
+	res.render("admUsuarios", { usuarios });
 });
 
 server.get("/statusLoginAdm", async (req, res) => {
+	let usuario = await usersRepository.getUser(
+		req.query.email,
+		req.query.password
+	);
 
-	let usuario = await usersRepository.getUser(req.query.email, req.query.password)
-
-	if(req.query.statusLogin == 1){
-		usuario.statusLogin = 1
-	}else{
-		usuario.statusLogin = 0
+	if (req.query.statusLogin == 1) {
+		usuario.statusLogin = 1;
+	} else {
+		usuario.statusLogin = 0;
 	}
 
-	let updateUsuario = await usersRepository.updateStatusLoginUserADM(usuario)
+	let updateUsuario = await usersRepository.updateStatusLoginUserADM(usuario);
 
 	let usuarios = await usersRepository.getUsersADM();
 
-	if(updateUsuario){
-		res.render("admUsuarios", {usuarios});
-	}else {
+	if (updateUsuario) {
+		res.render("admUsuarios", { usuarios });
+	} else {
 		console.log("DEU RUIM");
 	}
+});
+
+server.get("/admAddUsuario", (req, res) => {
+	res.render("admAddUsuario", {});
+});
+server.get("/admEditUsuario", async (req, res) => {
+	let id = req.query.user;
+	let usuarios = await usersRepository.getUsersADM();
+	let nome = "";
+	let email = "";
+	let password = "";
+	let telefone = "";
+
+	for (let i = 0; i < usuarios.length; i++) {
+		if (usuarios[i]._id == id) {
+			nome = usuarios[i].name;
+			email = usuarios[i].email;
+			password = usuarios[i].password;
+			telefone = usuarios[i].telefone;
+		}
+	}
+	res.render("admEditUsuario", { nome, email, password, telefone, id });
 });
 
 server.listen(3000, () => {

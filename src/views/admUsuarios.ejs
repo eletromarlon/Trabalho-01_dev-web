@@ -31,7 +31,10 @@
 			</nav>
 		</header>
 		<section>
-			<h2>Usuários Administradores</h2>
+			<div class="header">
+				<h2>Usuários Administradores</h2>
+				<a href="/admAddUsuario">Adicionar Usuário</a>
+			</div>
 			<main>
 				<h3>Listagem geral de Usuários Administradores</h3>
 				<table>
@@ -71,8 +74,11 @@
 								</a>
 							</td>
 							<td>
-								<a href="" class="aceita">
-									<i class="fa-solid fa-check"></i>
+								<a
+									href="/admEditUsuario?user=<%= usuario._id %> "
+									class="edita"
+								>
+									<i class="fa-solid fa-pen"></i>
 									Editar
 								</a>
 							</td>

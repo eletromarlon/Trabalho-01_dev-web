@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="styles/index.css" />
 		<link rel="stylesheet" href="styles/admLoja.css" />
 		<link rel="stylesheet" href="styles/editLoja.css" />
-		<link rel="stylesheet" href="styles/admEditUsuario.css" />
+		<link rel="stylesheet" href="styles/admEditUsuario.css">
 		<%- include("./favicon.ejs") %>
 	</head>
 	<body>
@@ -31,22 +31,22 @@
 			</nav>
 		</header>
 		<section>
-			<h2>Novo Usuário Administrador</h2>
+			<h2>Editar Administrador</h2>
 			<form action="">
 				<fieldset>
-					<legend>Formulário de Cadastro</legend>
+					<legend>Formulário de Edição</legend>
 					<div class="input">
 						<label for="nome">Nome</label>
-						<input type="text" id="nome" name="nome" placeholder="nome" required/>
+						<input type="text" id="nome" name="nome" placeholder="nome" required value="<%= nome %>"/>
 					</div>
 					<div class="input">
 						<label for="email">E-mail</label>
-						<input type="email" id="email" name="email" placeholder="email@email.com" required/>
+						<input type="email" id="email" name="email" placeholder="email@email.com" required value="<%= email %>"/>
 					</div>
 					<div class="input">
 						<label for="telefone">Telefone</label>
 						<input type="tel" id="telefone" name="telefone" maxlength="15"
-						pattern="\(\d{2}\)\s*\d{5}-\d{4}" placeholder="(99) 99999-9999" required/>
+						pattern="\(\d{2}\)\s*\d{5}-\d{4}" placeholder="(99) 99999-9999" required value="<%= telefone %> "/>
 						<div class="input">
 							<label for="password">Senha</label>
 							<div class="password">
@@ -56,6 +56,7 @@
 									name="password"
 									placeholder="senha"
 									minlength="6"
+									value="<%= atob(password) %>"
 									required
 								/>
 								<i
@@ -64,7 +65,7 @@
 								></i>
 							</div>
 						</div>
-					<button type="submit">Cadastrar Usuário</button>
+					<button type="submit">Confirmar Edição</button>
 				</fieldset>
 			</form>
 		</section>

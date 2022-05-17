@@ -1,5 +1,10 @@
 section {
 	width: 100%;
+	padding-right: 0;
+	padding-left: 0;
+}
+section .title {
+	margin-left: 25px;
 }
 section main {
 	background: #ffffff;
@@ -80,4 +85,12 @@ section main table tbody tr .status-0 {
 
 section main table tbody tr .status-1 {
 	color: #fac12f;
+}
+
+.aceita {
+	margin-right: 5px;
+}
+
+.header {
+	padding: 0 25px;
 }
