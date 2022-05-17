@@ -288,6 +288,31 @@ server.post("/update-perfil", async (req, res) => {
 server.get("/alterar-senha", (req, res) => {
 	res.render("alterarSenhaConta", {});
 });
+
+server.post("/alterar-senha", async (req, res) => {
+
+	let novaSenha = btoa(req.body.password[2]);
+
+	let users = await usersRepository.updateUser(loginatual, novaSenha);
+
+	var getUser = await usersRepository.getUsers();
+	let dadosUser = [];
+
+	getUser.forEach((user) => {
+		let id = user._id;
+
+		if (id == loginatual) {
+			dadosUser.push(user.name);
+			dadosUser.push(user.email);
+			dadosUser.push(user.password);
+			dadosUser.push(user.date);
+			dadosUser.push(user.telefone);
+			dadosUser.push(user.genero);
+		}
+	});
+	res.render("editPerfil", { dados: dadosUser });
+});
+
 server.get("/meus-alugueis", (req, res) => {
 	res.render("meusAlugueis", {});
 });
@@ -299,7 +324,7 @@ server.post("/loja-alugar", async (req, res) => {
 		{
 			_id: ObjectId().toHexString(),
 			veiculoId: req.query.car,
-			userId: loginatual,
+			userEmail: loginatual,
 			inicioAluguel: dados.dataini,
 			fimAluguel: dados.datafim,
 			pagamento: dados.pagamento,
@@ -477,7 +502,6 @@ server.get("/statusLoginAdm", async (req, res) => {
 server.get("/admAddUsuario", (req, res) => {
 	res.render("admAddUsuario", {});
 });
-
 server.get("/admEditUsuario", async (req, res) => {
 	let id = req.query.user;
 	let usuarios = await usersRepository.getUsersADM();
@@ -495,33 +519,6 @@ server.get("/admEditUsuario", async (req, res) => {
 		}
 	}
 	res.render("admEditUsuario", { nome, email, password, telefone, id });
-});
-
-server.post("/updateUserADM", async (req, res) => {
-
- 	let userData  = req.body
-
-	let senha = btoa(userData.password);
-
-	let updateUser = await usersRepository.updateUserADM(
-		// Dados em formato JSON para cadastro no banco
-		{
-			_id: userData.id,
-			name: userData.nome,
-			telefone: userData.telefone,
-			email: userData.email,
-			password: senha // Password em primeira posicao
-		}
-	);
-
-	let usuarios = await usersRepository.getUsersADM();
-
-		if (updateUser) {
-			res.render("admUsuarios", { usuarios });
-		} else {
-			console.log("DEU RUIM");
-		}
-
 });
 
 server.listen(3000, () => {

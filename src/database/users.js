@@ -41,14 +41,6 @@ class UsersRepository {
 		return user
 	}
 
-	async updateUserADM(user){
-		let db = await database.connect();
-		let updateUser = await db.collection("users").updateOne(
-			{_id:user._id, status:1},//CRITÉRIO DE UPDATE
-			{$set:{email:user.email, telefone:user.telefone, name:user.name, password:user.password}});
-		return user
-	}
-
 	async updateUser(nome, email, data, telefone, genero, id ){
 		let db = await database.connect();
 
@@ -64,11 +56,24 @@ class UsersRepository {
 
 		let user = await db.collection('users').updateOne({"_id": id},{$set: novos }, { upsert: true }, async (erro, resultado)=> {
 			if (erro) throw erro
-			await console.log(resultado.modifiedCount + ` deu certo`);
+			await console.log(resultado.modifiedCount + ` Confirmado`);
 		});
-
 	}
 
+	async updateUser(id, novaSenha){
+		let db = await database.connect();
+
+		let novos = {
+			password: novaSenha
+		};
+
+		console.log("dentro de updateUser", novos, "\nvalores", id, novaSenha );
+
+		let user = await db.collection('users').updateOne({"_id": id},{$set: novos }, { upsert: true }, async (erro, resultado)=> {
+			if (erro) throw erro
+			await console.log(resultado.modifiedCount + ` Confirmado`);
+		});
+	}
 }
 
 export const usersRepository = new UsersRepository();
